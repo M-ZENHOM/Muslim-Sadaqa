@@ -1,0 +1,14 @@
+{
+  "siteConfig": {
+    "title": "قرأن كريم",
+    "description": "قرأنك دايما معاك في اى حتة"
+  },
+  "SurahPage": {
+    "surahBtn": "التالي",
+    "surahBtnTwo": "السابق",
+    "Ayahs": "آيات"
+  },
+  "SearchPage": {
+    "inputPlaceholder": "ماذا تريد أن تقرأ؟"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "siteConfig": {
+    "title": "Quran Kareem",
+    "description": "You quran with you everywhere"
+  },
+  "SurahPage": {
+    "surahBtn": "Next",
+    "surahBtnTwo": "Prev",
+    "Ayahs": "Ayahs"
+  },
+  "SearchPage": {
+    "inputPlaceholder": "What do you want to read?"
+  }
+}
