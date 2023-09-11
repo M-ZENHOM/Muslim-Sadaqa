@@ -10,5 +10,11 @@
   },
   "SearchPage": {
     "inputPlaceholder": "What do you want to read?"
+  },
+  "IndexPage": {
+    "AyahBoxTitle": "AYAH OF THE DAY",
+    "FavBoxTitle": "FAV LIST",
+    "FavBoxSubTitle": "Empty",
+    "FavBoxDiscription": "Start adding the surahs of the Quran that you read daily for easy access to them every day"
   }
 }

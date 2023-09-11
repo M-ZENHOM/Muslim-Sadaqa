@@ -10,5 +10,11 @@
   },
   "SearchPage": {
     "inputPlaceholder": "ماذا تريد أن تقرأ؟"
+  },
+  "IndexPage": {
+    "AyahBoxTitle": "آية اليوم",
+    "FavBoxTitle": "المفضلة",
+    "FavBoxSubTitle": "فارغة",
+    "FavBoxDiscription": "ابدأ بأضافة سور القرأن التي تقرأها يوميا لسهولة الوصول اليها كل يوم"
   }
 }
