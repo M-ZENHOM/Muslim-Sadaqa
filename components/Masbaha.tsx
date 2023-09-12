@@ -1,8 +1,7 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-
-import MsbhaImg from '../../../public/Masbha/3.png'
+import MsbhaImg from '../public/Masbha/3.png'
 
 const Masbaha = ({ }) => {
     const [count, setCount] = React.useState(0)
