@@ -42,5 +42,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "next-pwa": "^5.6.0"
   }
 }

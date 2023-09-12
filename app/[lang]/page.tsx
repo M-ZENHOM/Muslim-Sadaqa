@@ -24,7 +24,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
 
   return (
     <Wrapper>
-      <Icons.QuranKareem className='w-4/12 mx-auto py-20' />
+      <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
       <div className='flex flex-wrap md:flex-nowrap gap-4 items-center justify-between'>
         <Card className='w-full h-60  p-8 text-center space-y-3 bg-gradient-to-br from-yellow-500/25 to-50% flex flex-col items-center justify-center'>
           <CardTitle className='text-muted-foreground'>{dict.IndexPage.AyahBoxTitle}</CardTitle>

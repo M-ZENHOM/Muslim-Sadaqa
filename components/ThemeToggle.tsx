@@ -8,7 +8,6 @@ export function ThemeToggle() {
     const { theme, setTheme } = useTheme()
     return (
         <div className="space-y-4">
-            <h2 className="font-extrabold text-lg">Theme</h2>
             <Tabs defaultValue={theme} className="w-full">
                 <TabsList className="w-full flex justify-between">
                     <TabsTrigger value="system"><Icons.System className="w-full" onClick={() => setTheme("system")} /></TabsTrigger>
