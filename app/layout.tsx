@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n-config'
-import '../globals.css'
+import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Noto_Kufi_Arabic as SansArabic } from 'next/font/google'
@@ -14,12 +14,12 @@ export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['400'] })
 export const metadata: Metadata = {
   title: `${siteConfig.title}`,
   description: siteConfig.description,
-  manifest: 'https://quran-with-you.vercel.app/manifest.json'
+  manifest: '/manifest.json'
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode, params: { lang: Locale } }) {
   return (
-    <html dir={params.lang === "ar" ? "rtl" : "ltr"} lang={params.lang}>
+    <html dir="rtl" lang="ar">
       <body className={arabicSans.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <main className="flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
