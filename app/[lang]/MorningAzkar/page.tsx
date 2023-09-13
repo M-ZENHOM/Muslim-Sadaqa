@@ -11,7 +11,7 @@ interface Zekr {
 }
 
 export default async function page() {
-    const res = await axios.get('http://localhost:3000/api/Azkar');
+    const res = await axios.get('/api/Azkar');
     const data = JSON.parse(res.data)
     return (
         <Wrapper className='py-20'>
