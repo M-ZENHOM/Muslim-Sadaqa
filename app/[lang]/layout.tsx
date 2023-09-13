@@ -14,7 +14,7 @@ export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['400'] })
 export const metadata: Metadata = {
   title: `${siteConfig.title}`,
   description: siteConfig.description,
-  manifest: '/manifest.json'
+  manifest: 'https://quran-with-you.vercel.app/manifest.json'
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode, params: { lang: Locale } }) {
