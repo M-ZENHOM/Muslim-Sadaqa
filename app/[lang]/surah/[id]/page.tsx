@@ -3,7 +3,7 @@ import { getAyahTafsir, getSurah } from '@/lib/getQuran';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import QuranImg from '../../../public/Quran2.png'
+import QuranImg from '../../../../public/Quran2.png'
 import { Card } from '@/components/ui/card';
 import { Icons } from '@/components/Icons';
 import { buttonVariants } from '@/components/ui/button';
