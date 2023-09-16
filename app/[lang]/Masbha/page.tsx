@@ -1,9 +1,10 @@
 import Masbaha from "@/components/Masbaha";
+import Wrapper from "@/components/Wrapper";
 
 export default function page() {
   return (
-    <div className='flex justify-center items-center w-full h-screen'>
+    <Wrapper className='flex justify-center items-center w-full h-screen'>
       <Masbaha />
-    </div>
+    </Wrapper>
   )
 }

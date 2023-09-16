@@ -3,13 +3,12 @@
     "title": "قرأن كريم",
     "description": "قرأنك دايما معاك في اى حتة"
   },
-  "NavMenu": {
-    "title": "الصفحات",
-    "Home": "الرئيسية",
-    "MorningAzkar": "اذكار الصباح",
-    "EvenAzkar": "اذكار المساء",
-    "Masbha": "مسبحة"
-  },
+  "NavMenu": [
+    { "title": "القرأن", "href": "/" },
+    { "title": "اذكار الصباح", "href": "/MorningAzkar" },
+    { "title": "اذكار المساء", "href": "/EvenAzkar" },
+    { "title": "مسبحة", "href": "/Masbha" }
+  ],
   "SurahPage": {
     "surahBtn": "التالي",
     "surahBtnTwo": "السابق",

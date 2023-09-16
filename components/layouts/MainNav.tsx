@@ -3,17 +3,15 @@ import React from 'react'
 import { ThemeToggle } from '../ThemeToggle'
 
 
-function MainNav({ NavMenu }: { NavMenu: { Home: string, MorningAzkar: string, EvenAzkar: string, title: string, Masbha: string } }) {
+function MainNav({ NavMenu }: { NavMenu: { title: string, href: string }[] }) {
     return (
-        <header className='w-60 bg-gradient-to-b from-muted border-l border-yellow-500/25 h-screen p-6 space-y-5 hidden md:flex md:flex-col'>
-            <h2 className='font-extrabold uppercase text-xl bg-gradient-to-l from-yellow-500 p-4'>{NavMenu.title}</h2>
-            <ul className='flex flex-col space-y-3 text-lg font-extrabold'>
-                <Link className='' href="/" >{NavMenu.Home}</Link>
-                <Link href="/MorningAzkar" >{NavMenu.MorningAzkar}</Link>
-                <Link href="/EvenAzkar" >{NavMenu.EvenAzkar}</Link>
-                <Link href="/Masbha" >{NavMenu.Masbha}</Link>
+        <header className='w-60 h-screen p-6 space-y-5 hidden md:flex md:flex-col'>
+            <ul className='flex flex-col space-y-3 text-lg font-extrabold border rounded-lg p-6 bg-muted'>
+                {NavMenu.map((link, i) => (
+                    <Link key={i} className='bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300' href={link.href} >{link.title}</Link>
+                ))}
             </ul>
-            <div className='flex  items-end h-full w-full'>
+            <div className='flex w-full border rounded-lg p-6 bg-muted'>
                 <ThemeToggle />
             </div>
         </header>

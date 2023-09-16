@@ -3,13 +3,12 @@
     "title": "Quran Kareem",
     "description": "You quran with you everywhere"
   },
-  "NavMenu": {
-    "title": "Pages",
-    "Home": "Home",
-    "MorningAzkar": "MorningAzkar",
-    "EvenAzkar": "EvenAzkar",
-    "Masbha": "Masbha"
-  },
+  "NavMenu": [
+    { "title": "Quran", "href": "/" },
+    { "title": "MorningAzkar", "href": "/MorningAzkar" },
+    { "title": "EvenAzkar", "href": "/EvenAzkar" },
+    { "title": "Masbha", "href": "/Masbha" }
+  ],
   "SurahPage": {
     "surahBtn": "Next",
     "surahBtnTwo": "Prev",

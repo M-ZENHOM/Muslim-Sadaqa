@@ -11,7 +11,7 @@ interface Zekr {
 }
 
 export default async function page() {
-    const res = await axios.get('https://quran-with-you.vercel.app/api/EvenAzkar');
+    const res = await axios.get('http://muslim-sadqa.vercel.app/api/EvenAzkar');
     const data = JSON.parse(res.data)
     return (
         <Wrapper className='py-20'>
