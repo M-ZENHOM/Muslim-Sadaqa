@@ -26,8 +26,8 @@ const FavBox = ({ dict }: { dict: IProps }) => {
                 {surahStore?.surahList.length !== 0 ?
                     <>
                         {surahStore?.surahList.map((surah) => (
-                            <Animate>
-                                <Card key={surah.surahID} className='w-full p-4 bg-secondary my-2 flex items-center justify-between text-center hover:bg-primary/50'>
+                            <Animate key={surah.surahID}>
+                                <Card className='w-full p-4 bg-secondary my-2 flex items-center justify-between text-center hover:bg-primary/50'>
                                     <CardTitle className='cursor-pointer text-lg' onClick={() => router.push(`/surah/${surah.surahID}`)}>{surah.title}</CardTitle>
                                     <Icons.Remove className='cursor-pointer hover:scale-125 hover:text-red-500 transition-all duration-300' onClick={() => surahStore.removeFromList(surah.surahID)} />
                                 </Card>
