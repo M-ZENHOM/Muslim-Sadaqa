@@ -18,7 +18,7 @@ export default async function page() {
             <div className='space-y-3'>
                 {EvenAzkar?.content.map((zakr: Zekr) => (
                     <Card key={zakr.repeat} className='p-4 space-y-3 bg-gradient-to-bl from-yellow-500/25 to-60%'>
-                        <CardTitle className='leading-10'>{zakr.zekr}</CardTitle>
+                        <CardTitle className='leading-10 text-md md:text-xl'>{zakr.zekr}</CardTitle>
                         <CardDescription>{zakr.bless}</CardDescription>
                         <CardContent className='flex gap-2 bg-muted py-2 px-4 rounded-lg w-fit'>
                             <h2>عدد المرات</h2>

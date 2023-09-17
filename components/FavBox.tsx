@@ -5,6 +5,7 @@ import { Card, CardTitle } from './ui/card'
 import { Icons } from './Icons'
 import { useRouter } from 'next/navigation'
 import { ScrollArea } from './ui/scroll-area'
+import Animate from './Animate'
 
 interface IProps {
     IndexPage: {
@@ -25,10 +26,12 @@ const FavBox = ({ dict }: { dict: IProps }) => {
                 {surahStore?.surahList.length !== 0 ?
                     <>
                         {surahStore?.surahList.map((surah) => (
-                            <Card key={surah.surahID} className='w-full p-3 bg-yellow-500/25 my-2 flex items-center justify-between text-center'>
-                                <CardTitle className='cursor-pointer text-lg' onClick={() => router.push(`/surah/${surah.surahID}`)}>{surah.title}</CardTitle>
-                                <Icons.Remove className='cursor-pointer hover:scale-125 hover:text-red-500 transition-all duration-300' onClick={() => surahStore.removeFromList(surah.surahID)} />
-                            </Card>
+                            <Animate>
+                                <Card key={surah.surahID} className='w-full p-4 bg-secondary my-2 flex items-center justify-between text-center hover:bg-primary/50'>
+                                    <CardTitle className='cursor-pointer text-lg' onClick={() => router.push(`/surah/${surah.surahID}`)}>{surah.title}</CardTitle>
+                                    <Icons.Remove className='cursor-pointer hover:scale-125 hover:text-red-500 transition-all duration-300' onClick={() => surahStore.removeFromList(surah.surahID)} />
+                                </Card>
+                            </Animate>
                         ))}
                     </>
                     : (<div className='space-y-3'>

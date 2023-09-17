@@ -23,8 +23,8 @@ const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs, englishName,
                 <span className="w-[35px] h-[35px] bg-gray-300 dark:bg-black rounded-full text-center leading-[35px] group-hover:bg-yellow-500">
                     {number}
                 </span>
-                <span className={cn({ "text-sm": lang === "en" })}>{name}</span>
-                <span className={cn("group-hover:text-yellow-500", { "text-sm": lang === "en" })} >{`${numberOfAyahs} آيات`}</span>
+                <span className={cn({ "text-sm": lang === "en" })}>{lang === "ar" ? name : englishName}</span>
+                <span className={cn("group-hover:text-yellow-500", { "text-sm": lang === "en" })} >{lang === "ar" ? `${numberOfAyahs} آيات` : `${numberOfAyahs} Ayahs`}</span>
             </Link>
             <Icons.Heart onClick={() => surahStore?.addToList(name, number)} className={cn("hover:text-red-500 hover:scale-125 transition-all duration-300 cursor-pointer", { "text-red-500 scale-125": surahStore?.surahList.find((s) => s.surahID === number) }, { "mx-2": lang === "en" })} />
         </div>

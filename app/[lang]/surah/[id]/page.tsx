@@ -48,7 +48,6 @@ export default async function page({ params, searchParams, params: { lang } }: {
                                     <Link href={{ query: { ayahNum: sur.number } }} >
                                         <Icons.Play className='hover:text-yellow-500 w-6 h-6' />
                                     </Link>
-
                                     <Dialog>
                                         <Link href={{ query: { tafsirAyah: sur.number } }} >
                                             <DialogTrigger>
