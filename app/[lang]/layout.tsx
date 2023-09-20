@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Noto_Kufi_Arabic as SansArabic } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react';
 import SiteHeader from '@/components/layouts/SiteHeader'
 import SiteFooter from '@/components/layouts/SiteFooter'
 import { siteConfig } from '@/config/site'
@@ -28,6 +29,7 @@ export default function RootLayout({ children, params }: { children: React.React
             {children}
           </main>
           <SiteFooter />
+          <Analytics />
         </Providers>
       </body>
     </html>
