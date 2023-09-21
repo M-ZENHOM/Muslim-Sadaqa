@@ -12,6 +12,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { Locale } from '@/i18n-config';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import Tafsir from '@/components/Tafsir';
 
 export interface SurahType {
     number: number,
@@ -30,10 +31,9 @@ export interface SurahType {
 
 export default async function page({ params, searchParams, params: { lang } }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
     const ayahNum = typeof searchParams.ayahNum === 'string' ? Number(searchParams.ayahNum) : 1
-    const tafsirAyah = typeof searchParams.tafsirAyah === 'string' ? Number(searchParams.tafsirAyah) : 1
     const Surah = await getSurah(params.id);
     const { SurahPage } = await getDictionary(lang)
-    const tafsir = await getAyahTafsir(tafsirAyah);
+
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>
             <div className='flex flex-col h-full flex-1'>
@@ -41,32 +41,14 @@ export default async function page({ params, searchParams, params: { lang } }: {
                     <Icons.Bismallah className='text-center w-full' />
                     {Surah.data.ayahs.map((sur: SurahType) => (
                         <div key={sur.number} className='flex justify-between items-center w-full p-2 group'>
-                            <span className='bg-muted w-12 h-12 rounded-full text-center flex justify-center items-center group-hover:bg-yellow-500  text-lg'>{sur.numberInSurah}</span>
+                            <span className='bg-muted w-12 h-12 rounded-full text-center flex justify-center items-center group-hover:bg-primary  text-lg'>{sur.numberInSurah}</span>
                             <Popover>
-                                <PopoverTrigger className='text-2xl p-2 group-hover:text-yellow-500 transition-all duration-300 text-center w-full'>{sur.numberInSurah === 1 ? Surah.data?.number === 1 ? sur.text : sur.text.slice(39) : sur.text}</PopoverTrigger>
+                                <PopoverTrigger className='text-2xl p-2 group-hover:text-primary transition-all duration-300 text-center w-full'>{sur.numberInSurah === 1 ? Surah.data?.number === 1 ? sur.text : sur.text.slice(39) : sur.text}</PopoverTrigger>
                                 <PopoverContent className='flex items-center justify-between w-[100px] text-center '>
                                     <Link href={{ query: { ayahNum: sur.number } }} >
-                                        <Icons.Play className='hover:text-yellow-500 w-6 h-6' />
+                                        <Icons.Play className='hover:text-primary w-6 h-6' />
                                     </Link>
-                                    <Dialog>
-                                        <Link href={{ query: { tafsirAyah: sur.number } }} >
-                                            <DialogTrigger>
-                                                <Icons.Tafsir className='hover:text-yellow-500 w-6 h-6' />
-                                            </DialogTrigger>
-                                        </Link>
-                                        <DialogContent className='p-10'>
-                                            <DialogHeader className='space-y-5 text-start'>
-                                                <DialogTitle className='leading-8'>{sur.numberInSurah === 1 ? Surah.data?.number === 1 ? sur.text : sur.text.slice(39) : sur.text}</DialogTitle>
-                                                <DialogDescription>
-                                                    {tafsir.data.text}
-                                                </DialogDescription>
-                                            </DialogHeader>
-                                            <div className='flex items-center gap-2'>
-                                                <span className='bg-muted rounded-lg w-fit p-2 px-4'>{tafsir.data.edition.name}</span>
-                                                <span className='bg-muted rounded-lg w-fit p-2 px-4'>{tafsir.data.surah.name}</span>
-                                            </div>
-                                        </DialogContent>
-                                    </Dialog>
+                                    <Tafsir ayahNum={sur.number} />
                                 </PopoverContent>
                             </Popover>
                         </div>

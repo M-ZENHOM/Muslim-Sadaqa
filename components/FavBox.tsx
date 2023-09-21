@@ -20,7 +20,7 @@ const FavBox = ({ dict }: { dict: IProps }) => {
     const surahStore = useStore(useSurahStore, (state) => state)
     const router = useRouter()
     return (
-        <Card className='w-full h-60 p-8 text-center space-y-3 bg-gradient-to-br from-yellow-500/25 to-50%'>
+        <Card className='w-full h-60 p-8 text-center space-y-3 bg-gradient-to-br from-primary/25 to-50%'>
             <CardTitle className='text-muted-foreground'>{dict.IndexPage.FavBoxTitle}</CardTitle>
             <ScrollArea className="rounded-md p-4 h-full" >
                 {surahStore?.surahList.length !== 0 ?

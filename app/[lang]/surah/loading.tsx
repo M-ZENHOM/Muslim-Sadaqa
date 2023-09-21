@@ -7,9 +7,9 @@ function loading() {
             <div className='flex flex-col h-full flex-1'>
                 <div className="w-full h-[80vh] pb-20 pt-5">
                     <Skeleton className="w-[300px] h-[30px] rounded-md mx-auto mb-20" />
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((s, i) => (
+                    {Array.from({ length: 10 }).map((_, i) => (
                         <div key={i} className='flex justify-between items-center w-full p-2 group mt-2'>
-                            <Skeleton className="w-4/6 h-[20px] rounded-md text-center flex justify-center items-center group-hover:bg-yellow-500  text-lg mx-auto" />
+                            <Skeleton className="w-4/6 h-[20px] rounded-md text-center flex justify-center items-center group-hover:bg-primary  text-lg mx-auto" />
                         </div>
                     ))}
                 </div>

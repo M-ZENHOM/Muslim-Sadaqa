@@ -1,5 +1,7 @@
 import axios from "axios"
 
+
+
 export const getQuran = async () => {
     try {
         const res = await axios.get(`http://api.alquran.cloud/v1/surah`)
@@ -8,7 +10,6 @@ export const getQuran = async () => {
         console.log(error);
         return `${error} Fetching erorr on all quran surah`
     }
-
 }
 
 export const getSurah = async (id: number) => {

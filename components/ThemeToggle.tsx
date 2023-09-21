@@ -2,19 +2,17 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 import { Icons } from "./Icons"
-import { Tabs, TabsList, TabsTrigger } from "./ui/tabs"
+import { Button } from "./ui/button"
+import { cn } from "@/lib/utils"
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme()
     return (
-        <div className="space-y-4">
-            <Tabs defaultValue={theme} className="w-full">
-                <TabsList className="w-full flex justify-between">
-                    <TabsTrigger value="system"><Icons.System className="w-full" onClick={() => setTheme("system")} /></TabsTrigger>
-                    <TabsTrigger value="dark"><Icons.Moon className="w-full" onClick={() => setTheme("dark")} /></TabsTrigger>
-                    <TabsTrigger value="light"><Icons.Sun className="w-full" onClick={() => setTheme("light")} /></TabsTrigger>
-                </TabsList>
-            </Tabs>
+        <div className="flex items-center justify-center w-full">
+            <Button className={cn("w-full", theme === "light" ? "bg-primary" : "")} variant="outline" aria-label="Theme" value="light"><Icons.Sun className="w-4 h-4" onClick={() => setTheme("light")} /></Button>
+            <Button className={cn("w-full mx-1", theme === "dark" ? "bg-primary" : "")} variant="outline" aria-label="Theme" value="dark"><Icons.Moon className="w-4 h-4" onClick={() => setTheme("dark")} /></Button>
+            <Button className={cn("w-full", theme === "system" ? "bg-primary" : "")} variant="outline" aria-label="Theme" value="system"><Icons.System className="w-4 h-4" onClick={() => setTheme("system")} /></Button>
+            <span className="sr-only">Toggle theme</span>
         </div>
     )
 }
