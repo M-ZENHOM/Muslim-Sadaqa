@@ -48,7 +48,7 @@ export default async function page({ params, searchParams, params: { lang } }: {
                                     <Link href={{ query: { ayahNum: sur.number } }} >
                                         <Icons.Play className='hover:text-primary w-6 h-6' />
                                     </Link>
-                                    <Tafsir ayahNum={sur.number} />
+                                    <Tafsir ayahNum={sur.number} ayahText={sur.text} />
                                 </PopoverContent>
                             </Popover>
                         </div>

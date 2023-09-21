@@ -4,17 +4,15 @@ import { Icons } from './Icons'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { SurahType } from '@/app/[lang]/surah/[id]/page'
 import { Skeleton } from './ui/skeleton'
 
 interface TafsirProps {
     ayahNum: number
+    ayahText: string
 }
 
-const Tafsir: FC<TafsirProps> = ({ ayahNum }) => {
-    const { data, isLoading } = useQuery(["ayah", ayahNum], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum !== 1 && ayahNum}/ar.muyassar`).then((res) => res.data.data));
-    const { data: surah } = useQuery(["surahAyah"], () => axios.get(`http://api.alquran.cloud/v1/ayah/${ayahNum !== 1 && ayahNum}/ar.alafasy`).then((res) => res.data.data));
-
+const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText }) => {
+    const { data, isLoading } = useQuery(["ayah", ayahNum], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum}/ar.muyassar`).then((res) => res.data.data));
     return (
         <Dialog>
             <DialogTrigger> <Icons.Tafsir className='hover:text-primary w-6 h-6' /></DialogTrigger>
@@ -31,7 +29,7 @@ const Tafsir: FC<TafsirProps> = ({ ayahNum }) => {
                 <DialogContent className='p-10' dir='rtl'>
                     <DialogHeader className='space-y-5 text-start'>
                         <DialogTitle className='leading-8'>
-                            {surah?.text}
+                            {ayahText}
                         </DialogTitle>
                         <DialogDescription>
                             {data?.text}
