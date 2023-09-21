@@ -23,7 +23,7 @@ function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, 
             <Link href='/'>{siteConfig.title}</Link>
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger className={cn(buttonVariants({ variant: "outline" }), { "mx-2": lang === "ar" })}>
-                    <Icons.Bars />
+                    <Icons.Bars aria-label='Bars' />
                 </SheetTrigger>
                 <SheetContent>
                     <SheetHeader className='py-5 '>
