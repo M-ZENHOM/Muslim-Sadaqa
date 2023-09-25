@@ -12,10 +12,10 @@ interface TafsirProps {
 }
 
 const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText }) => {
-    const { data, isLoading } = useQuery(["ayah", ayahNum], () => axios.get(`${process.env.API_URL}/ayah/${ayahNum}/ar.muyassar`).then((res) => res.data.data));
+    const { data, isLoading } = useQuery(["ayah", ayahNum], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum}/ar.muyassar`).then((res) => res.data.data));
     return (
         <Dialog>
-            <DialogTrigger> <Icons.Tafsir className='hover:text-primary w-6 h-6' /></DialogTrigger>
+            <DialogTrigger ><Icons.Tafsir className='hover:text-primary w-6 h-6' /></DialogTrigger>
             {isLoading ? (
                 <DialogContent className='p-10'>
                     <Skeleton className='w-full h-6' />
