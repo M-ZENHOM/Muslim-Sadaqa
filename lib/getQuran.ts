@@ -4,7 +4,7 @@ import axios from "axios"
 
 export const getQuran = async () => {
     try {
-        const res = await axios.get(`http://api.alquran.cloud/v1/surah`)
+        const res = await axios.get(`${process.env.API_URL}/surah`)
         return res.data
     } catch (error) {
         console.log(error);
@@ -14,7 +14,7 @@ export const getQuran = async () => {
 
 export const getSurah = async (id: number) => {
     try {
-        const res = await axios.get(`https://api.alquran.cloud/v1/surah/${id}/ar.alafasy`)
+        const res = await axios.get(`${process.env.API_URL}/surah/${id}/ar.alafasy`)
         return res.data
     } catch (error) {
         console.log(error);
@@ -24,21 +24,12 @@ export const getSurah = async (id: number) => {
 
 export const getRandomAyah = async (ayahNumber: number) => {
     try {
-        const res = await axios.get(`http://api.alquran.cloud/v1/ayah/${ayahNumber}/ar.alafasy`)
+        const res = await axios.get(`${process.env.API_URL}/ayah/${ayahNumber}/ar.alafasy`)
         return res.data
 
     } catch (error) {
         console.log(error);
         return `${error} Fetching erorr on RandomAyah`
-    }
-}
-export const getAyahTafsir = async (AyahNumber: number) => {
-    try {
-        const res = await axios.get(`https://api.alquran.cloud/v1/ayah/${AyahNumber}/ar.muyassar`)
-        return res.data
-    } catch (error) {
-        console.log(error);
-        return `${error} Fetching erorr on AyahTafsir`
     }
 }
 
