@@ -13,10 +13,8 @@ import { getRandomAyah } from '@/lib/getRandomAyah'
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
-  const { chapters } = await getQuran();
+  const Quran = await getQuran();
   const dict = await getDictionary(lang)
-  console.log(chapters);
-
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
@@ -28,15 +26,16 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
         <FavBox dict={dict} />
       </div>
       <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
-        {/* {Quran.code !== 200 ? (
+        {Quran.code !== 200 ? (
           <h2 className='text-red-500 font-extrabold text-center'>{Quran}</h2>
-        ) : ( */}
-
-        {chapters.map((q: QuranData) => (
-          <SurhaBox key={q.id} number={q.id} name={q.name_arabic} englishName={q.name_simple} numberOfAyahs={q.verses_count} lang={lang} />
-        ))}
-
-        {/* )} */}
+        ) : (
+          <>
+            {Quran.data.surahs.map((q: QuranData) => (
+              <SurhaBox key={q.number} number={q.number} name={q.name} englishName={q.englishName} numberOfAyahs={q.ayahs.length} lang={lang} />
+            ))
+            }
+          </>
+        )}
       </div>
     </Wrapper>
   )

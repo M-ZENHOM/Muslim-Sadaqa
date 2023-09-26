@@ -4,7 +4,7 @@ import axios from "axios"
 
 export const getQuran = async () => {
     try {
-        const res = await axios.get(`https://api.quran.com/api/v4/chapters?language=ar`)
+        const res = await axios.get(`http://api.alquran.cloud/v1/quran/ar.alafasy`)
         return res.data
     } catch (error) {
         if (axios.isAxiosError(error)) {
