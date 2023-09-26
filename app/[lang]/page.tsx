@@ -2,18 +2,21 @@ import { Icons } from '@/components/Icons'
 import SurhaBox from '@/components/SurhaBox'
 import Wrapper from '@/components/Wrapper'
 import { Locale } from '@/i18n-config'
-import { getQuran, getRandomAyah } from '@/lib/getQuran'
+import { getQuran } from '@/lib/getQuran'
 import { Card, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import FavBox from '@/components/FavBox'
 import { getDictionary } from '@/lib/dictionaries'
 import { QuranData } from '@/types'
+import { getRandomAyah } from '@/lib/getRandomAyah'
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
   const Quran = await getQuran();
   const dict = await getDictionary(lang)
+  console.log(Quran);
+
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />

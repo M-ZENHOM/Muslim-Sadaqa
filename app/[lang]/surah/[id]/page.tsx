@@ -1,5 +1,4 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { getSurah } from '@/lib/getQuran';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
@@ -12,6 +11,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { Locale } from '@/i18n-config';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import Tafsir from '@/components/Tafsir';
+import { getSurah } from '@/lib/getSurah';
 
 export interface SurahType {
     number: number,
