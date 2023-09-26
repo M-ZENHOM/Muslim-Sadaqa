@@ -1,5 +1,4 @@
 "use client"
-import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Icons } from './Icons'
@@ -11,11 +10,9 @@ interface SurhaBoxProps {
     number: number,
     name: string,
     numberOfAyahs: number,
-    englishName: string,
-    lang: Locale
 }
 
-const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs, englishName, lang }) => {
+const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs }) => {
     const surahStore = useStore(useSurahStore, (state) => state)
     return (
         <div key={number} className='flex w-full  max-w-[300px] justify-between items-center p-4 py-6 bg-muted rounded-lg border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 group'>
@@ -23,11 +20,11 @@ const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs, englishName,
                 <span className="w-[35px] h-[35px] bg-gray-300 dark:bg-black rounded-full text-center leading-[35px] group-hover:bg-primary">
                     {number}
                 </span>
-                <span className={cn({ "text-sm": lang === "en" })}>{name}</span>
-                <span className={cn("group-hover:text-primary", { "text-sm": lang === "en" })} >{`${numberOfAyahs} آيات`}</span>
+                <span>{name}</span>
+                <span className={cn("group-hover:text-primary")} >{`${numberOfAyahs} آيات`}</span>
             </Link>
             {surahStore?.surahList.find((s) => s.surahID === number) ? <Icons.FilledHeart onClick={() => surahStore?.toggleSurah(name, number)} className='w-7 h-7 cursor-pointer' /> : (
-                <Icons.Heart onClick={() => surahStore?.toggleSurah(name, number)} className={cn("w-7 h-7 hover:scale-125 transition-all duration-300 cursor-pointer", { "mx-2": lang === "en" })} />
+                <Icons.Heart onClick={() => surahStore?.toggleSurah(name, number)} className={cn("w-7 h-7 hover:scale-125 transition-all duration-300 cursor-pointer")} />
             )}
         </div>
     )
