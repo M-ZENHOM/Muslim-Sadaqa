@@ -11,8 +11,7 @@ import { QuranData } from '@/types'
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
-  const randomAyah = Math.floor(Math.random() * 6236);
-  const ayah = await getRandomAyah(randomAyah)
+  const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
   const Quran = await getQuran();
   const dict = await getDictionary(lang)
   return (
@@ -26,9 +25,15 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
         <FavBox dict={dict} />
       </div>
       <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
-        {Quran.data.map((q: QuranData) => (
-          <SurhaBox key={q.number} number={q.number} name={q.name} englishName={q.englishName} numberOfAyahs={q.numberOfAyahs} lang={lang} />
-        ))}
+        {Quran.code !== 200 ? (
+          <h2 className='text-red-500 font-extrabold text-center'>{Quran}</h2>
+        ) : (
+          <>
+            {Quran.data?.surahs.map((q: QuranData) => (
+              <SurhaBox key={q.number} number={q.number} name={q.name} englishName={q.englishName} numberOfAyahs={q.ayahs.length} lang={lang} />
+            ))}
+          </>
+        )}
       </div>
     </Wrapper>
   )

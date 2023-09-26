@@ -5,4 +5,5 @@ export interface QuranData {
     englishNameTranslation: string,
     numberOfAyahs: number,
     revelationType: string
+    ayahs: []
 }

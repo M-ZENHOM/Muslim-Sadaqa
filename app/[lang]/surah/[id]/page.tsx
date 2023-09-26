@@ -18,6 +18,7 @@ export interface SurahType {
     numberOfAyahs: number,
     text: string,
     audio: string,
+    audioSecondary: string,
     numberInSurah: number,
     juz: number,
     manzil: number,
@@ -41,12 +42,13 @@ export default async function page({ params, searchParams, params: { lang } }: {
                     {Surah.data.ayahs.map((sur: SurahType) => (
                         <div key={sur.number} className='flex justify-between items-center w-full p-2 group'>
                             <span className='bg-muted w-12 h-12 rounded-full text-center flex justify-center items-center group-hover:bg-primary  text-lg'>{sur.numberInSurah}</span>
-                            <Popover>
+                            <Popover modal={false}>
                                 <PopoverTrigger className='text-2xl p-2 group-hover:text-primary transition-all duration-300 text-center w-full'>{sur.numberInSurah === 1 ? Surah.data?.number === 1 ? sur.text : sur.text.slice(39) : sur.text}</PopoverTrigger>
                                 <PopoverContent className='flex items-center justify-between w-[100px] text-center '>
                                     <Link href={{ query: { ayahNum: sur.number } }} >
                                         <Icons.Play className='hover:text-primary w-6 h-6' />
                                     </Link>
+                                    {/* Refactor Tafsir Dialog Modal Later ... */}
                                     <Tafsir ayahNum={sur.number} ayahText={sur.text} />
                                 </PopoverContent>
                             </Popover>

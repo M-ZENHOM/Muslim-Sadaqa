@@ -4,11 +4,13 @@ import axios from "axios"
 
 export const getQuran = async () => {
     try {
-        const res = await axios.get(`${process.env.API_URL}/surah`)
+        const res = await axios.get(`${process.env.API_URL}/quran/ar.alafasy`)
         return res.data
     } catch (error) {
-        console.log(error);
-        return `${error} Fetching erorr on all quran surah`
+        if (axios.isAxiosError(error)) {
+            console.log(error.message);
+            return "Error try again later - في مشكلة جرب في وقت تاني";
+        }
     }
 }
 
