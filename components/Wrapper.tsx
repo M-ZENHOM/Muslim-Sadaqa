@@ -7,7 +7,7 @@ interface WrapperProps {
 }
 
 const Wrapper: FC<WrapperProps> = ({ children, className }) => {
-    return <section className={cn("w-full max-w-7xl mx-auto px-4", className)}>{children}</section>
+    return <section className={cn("w-full max-w-screen-2xl mx-auto px-4", className)}>{children}</section>
 }
 
 export default Wrapper

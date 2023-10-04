@@ -7,12 +7,18 @@ export interface QuranData {
     revelationType: string
     ayahs: []
 }
-// export interface QuranData {
-//     id: number,
-//     name_simple: string,
-//     verses_count: number,
-//     name_arabic: string
-//     translated_name: {
-//         name: string
-//     }
-// }
+export interface SurahType {
+    number: number,
+    numberOfAyahs: number,
+    text: string,
+    audio: string,
+    audioSecondary: string,
+    numberInSurah: number,
+    juz: number,
+    manzil: number,
+    page: number,
+    ruku: number,
+    hizbQuarter: number,
+    sajda: boolean
+
+}

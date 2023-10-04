@@ -8,9 +8,11 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { ThemeToggle } from '../ThemeToggle'
 import { useRouter } from 'next/navigation'
+import { Locale } from '@/i18n-config'
+import LangToggle from '../LangToggle'
 
 
-function MobileNav() {
+function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string }[] }) {
     const router = useRouter()
     const [open, setOpen] = React.useState(false)
     const handleNavigate = (href: string) => {
@@ -27,12 +29,15 @@ function MobileNav() {
                 <SheetContent>
                     <SheetHeader className='py-5 '>
                         <ul className='flex flex-col space-y-3 text-lg font-extrabold'>
-                            {siteConfig.NavMenu.map((link, i) => (
+                            {NavMenu.map((link, i) => (
                                 <button onClick={() => handleNavigate(link.href)} key={i} className='bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300' >{link.title}</button>
                             ))}
                         </ul>
                         <div className='flex flex-col items-baseline bottom-5 absolute'>
                             <ThemeToggle />
+                        </div>
+                        <div className='flex flex-col items-baseline bottom-35 absolute'>
+                            <LangToggle />
                         </div>
                     </SheetHeader>
                 </SheetContent>

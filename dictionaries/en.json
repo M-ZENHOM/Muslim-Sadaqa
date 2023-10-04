@@ -1,0 +1,26 @@
+{
+  "siteConfig": {
+    "title": "Quran Kareem",
+    "description": "You quran with you everywhere"
+  },
+  "NavMenu": [
+    { "title": "Quran", "href": "/" },
+    { "title": "Azkar", "href": "/Azkar" },
+    { "title": "Masbha", "href": "/Masbha" },
+    { "title": "Died Doaa", "href": "/DiedDoaa" }
+  ],
+  "SurahPage": {
+    "surahBtn": "Next",
+    "surahBtnTwo": "Prev",
+    "Ayahs": "Ayahs"
+  },
+  "SearchPage": {
+    "inputPlaceholder": "What do you want to read?"
+  },
+  "IndexPage": {
+    "AyahBoxTitle": "AYAH OF THE DAY",
+    "FavBoxTitle": "FAV LIST",
+    "FavBoxSubTitle": "Empty",
+    "FavBoxDiscription": "Start adding the surahs of the Quran that you read daily for easy access to them every day"
+  }
+}

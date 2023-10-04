@@ -23,7 +23,7 @@ function loading() {
             </div>
             <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
                 {Array.from({ length: 30 }).map((_, i) => (
-                    <div key={i} className='flex w-full  max-w-[300px] justify-between items-center p-4 py-6 bg-muted rounded-lg border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 group'>
+                    <div key={i} className='flex w-full  max-w-[350px] justify-between items-center p-4 py-6 bg-muted rounded-lg border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 group'>
                         <div className='flex items-center justify-between space-x-4 w-full'>
                             <span className="w-[35px] h-[35px]   text-center leading-[35px] ">
                                 <Skeleton className="w-[30px] h-[30px] rounded-full" />

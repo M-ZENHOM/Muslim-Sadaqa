@@ -2,7 +2,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import QuranImg from '../../../public/Quran2.png'
+import QuranImg from '../../../../public/Quran2.png'
 import { Card } from '@/components/ui/card';
 import { Icons } from '@/components/Icons';
 import { buttonVariants } from '@/components/ui/button';
@@ -10,26 +10,15 @@ import { cn } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import Tafsir from '@/components/Tafsir';
 import { getSurah } from '@/lib/getSurah';
+import { getDictionary } from '../../dictionaries';
+import { Locale } from '@/i18n-config';
+import { SurahType } from '@/types';
 
-export interface SurahType {
-    number: number,
-    numberOfAyahs: number,
-    text: string,
-    audio: string,
-    audioSecondary: string,
-    numberInSurah: number,
-    juz: number,
-    manzil: number,
-    page: number,
-    ruku: number,
-    hizbQuarter: number,
-    sajda: boolean
 
-}[]
-
-export default async function page({ params, searchParams }: { params: { id: number }, searchParams: { [key: string]: string | string[] | undefined } }) {
+export default async function page({ params, searchParams }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
     const ayahNum = typeof searchParams.ayahNum === 'string' ? Number(searchParams.ayahNum) : 1
     const Surah = await getSurah(params.id);
+    const { SurahPage } = await getDictionary(params.lang)
 
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>
@@ -57,11 +46,12 @@ export default async function page({ params, searchParams }: { params: { id: num
             <Card className='flex flex-col items-start bg-muted h-fit lg:h-[89vh] w-full lg:w-[300px] p-8 '>
                 <Image src={QuranImg} width={200} height={200} priority alt='Quran img' className='hidden lg:block' />
                 <div className='flex flex-col space-y-5 font-extrabold w-full'>
-                    <h2>{Surah.data?.name} </h2>
-                    <span>{Surah.data?.numberOfAyahs} آيات</span>
-                    <span>{Surah.data?.revelationType === "Medinan" ? "مدنيه" : "مكيه"}</span>
-                    <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 114 })} href={{ pathname: `/surah/${Surah.data.number + 1}` }} >التالي</Link>
-                    <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 1 })} href={{ pathname: `/surah/${Surah.data.number - 1}` }} >السابق</Link>
+                    <h2>{params.lang === "ar" ? Surah.data?.name : Surah.data?.englishName} </h2>
+                    {params.lang === "en" && <h4>{Surah.data?.englishNameTranslation}</h4>}
+                    <span>{Surah.data?.numberOfAyahs} {SurahPage.Ayahs}</span>
+                    <span>{params.lang === "ar" ? Surah.data?.revelationType === "Medinan" ? "مدنيه" : "مكيه" : Surah.data?.revelationType}</span>
+                    <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 114 })} href={{ pathname: `/surah/${Surah.data.number + 1}` }} >{SurahPage.surahBtn}</Link>
+                    <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 1 })} href={{ pathname: `/surah/${Surah.data.number - 1}` }} >{SurahPage.surahBtnTwo}</Link>
                 </div>
             </Card>
         </section>

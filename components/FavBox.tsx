@@ -7,13 +7,19 @@ import { useRouter } from 'next/navigation'
 import { ScrollArea } from './ui/scroll-area'
 import Animate from './Animate'
 
-
-const FavBox = () => {
+interface FavProps {
+    IndexPage: {
+        FavBoxTitle: string
+        FavBoxSubTitle: string
+        FavBoxDiscription: string
+    }
+}
+const FavBox = ({ IndexPage }: FavProps) => {
     const surahStore = useStore(useSurahStore, (state) => state)
     const router = useRouter()
     return (
         <Card className='w-full h-60 p-8 text-center space-y-3 bg-gradient-to-br from-primary/25 to-50%'>
-            <CardTitle className='text-muted-foreground'>المفضلة</CardTitle>
+            <CardTitle className='text-muted-foreground'>{IndexPage.FavBoxTitle}</CardTitle>
             <ScrollArea className="rounded-md p-4 h-full" >
                 {surahStore?.surahList.length !== 0 ?
                     <>
@@ -27,8 +33,8 @@ const FavBox = () => {
                         ))}
                     </>
                     : (<div className='space-y-3'>
-                        <h2 className='cursor-pointer text-xl'>فارغة</h2>
-                        <p className='text-muted-foreground'> ابدأ بأضافة سور القرأن التي تقرأها يوميا لسهولة الوصول اليها كل يوم</p>
+                        <h2 className='cursor-pointer text-xl'>{IndexPage.FavBoxSubTitle}</h2>
+                        <p className='text-muted-foreground'>{IndexPage.FavBoxDiscription} </p>
                     </div>)}
             </ScrollArea>
         </Card>
