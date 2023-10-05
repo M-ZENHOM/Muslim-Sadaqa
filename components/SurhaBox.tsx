@@ -26,8 +26,8 @@ const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs, englishName,
                 <span>{lang === "ar" ? `${name} ` : englishName}</span>
                 <span className={cn("group-hover:text-primary")} >{lang === "ar" ? `${numberOfAyahs} آيات` : `${numberOfAyahs} Ayahs`}</span>
             </Link>
-            {surahStore?.surahList.find((s) => s.surahID === number) ? <Icons.FilledHeart onClick={() => surahStore?.toggleSurah(lang === "ar" ? name : englishName, number)} className='w-7 h-7 cursor-pointer ml-4' /> : (
-                <Icons.Heart onClick={() => surahStore?.toggleSurah(lang === "ar" ? name : englishName, number)} className={cn("w-7 h-7 hover:scale-125 transition-all duration-300 cursor-pointer ml-4")} />
+            {surahStore?.surahList.find((s) => s.surahID === number) ? <Icons.FilledHeart onClick={() => surahStore?.toggleSurah(lang === "ar" ? name : englishName, number)} className='w-7 h-7 cursor-pointer ml-4 ' /> : (
+                <Icons.Heart onClick={() => surahStore?.toggleSurah(lang === "ar" ? name : englishName, number)} className={cn("w-7 h-7 hover:scale-125 transition-all duration-300 cursor-pointer ml-4  ")} />
             )}
         </div>
     )

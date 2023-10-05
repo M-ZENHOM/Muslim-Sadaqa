@@ -33,12 +33,11 @@ function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, 
                                 <button onClick={() => handleNavigate(link.href)} key={i} className='bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300' >{link.title}</button>
                             ))}
                         </ul>
-                        <div className='flex flex-col items-baseline bottom-5 absolute'>
+                        <div className='flex flex-col items-baseline bottom-5 absolute space-y-5'>
                             <ThemeToggle />
-                        </div>
-                        <div className='flex flex-col items-baseline bottom-35 absolute'>
                             <LangToggle />
                         </div>
+
                     </SheetHeader>
                 </SheetContent>
             </Sheet>

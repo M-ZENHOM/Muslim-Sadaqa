@@ -12,9 +12,9 @@ const LangToggle = () => {
         router.push(`/${lang}/${filterPathName}`)
     }
     return (
-        <div className='flex items-center gap-2'>
-            <Button className='text-center text-md' variant="outline" onClick={() => handleToggle("en")}>EN</Button>
-            <Button className='text-center text-md' variant="outline" onClick={() => handleToggle("ar")}>AR</Button>
+        <div className='flex items-center justify-center gap-2'>
+            <Button className='text-center text-xs' variant="outline" onClick={() => handleToggle("en")}>EN</Button>
+            <Button className='text-center text-xs' variant="outline" onClick={() => handleToggle("ar")}>AR</Button>
         </div>
     )
 }

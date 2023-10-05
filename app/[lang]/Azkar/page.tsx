@@ -5,6 +5,8 @@ import { Icons } from '@/components/Icons';
 import { MorningAzkar } from '@/config/static/MorningAzkar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EvenAzkar } from '@/config/static/EvenAzkar';
+import { Locale } from '@/i18n-config';
+import { getDictionary } from '../dictionaries';
 
 interface Zekr {
     zekr: string,
@@ -12,14 +14,16 @@ interface Zekr {
     bless: string
 }
 
-export default async function page() {
+
+export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
+    const { AzkarPage } = await getDictionary(lang)
     return (
-        <Wrapper className='py-20'>
-            <h2 className='text-5xl font-extrabold text-center py-10 flex items-center justify-between'>الاذكار <Icons.Sun className='w-14 h-14' /></h2>
-            <Tabs defaultValue="MorningAzkar">
-                <TabsList>
-                    <TabsTrigger value="MorningAzkar">اذكار الصباح</TabsTrigger>
-                    <TabsTrigger value="EvenAzkar">اذكار المساء</TabsTrigger>
+        <Wrapper className='py-20' >
+            <h2 className='text-5xl font-extrabold text-center py-10 flex items-center justify-between'>{AzkarPage.Title} <Icons.Sun className='w-14 h-14' /></h2>
+            <Tabs defaultValue="MorningAzkar" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+                <TabsList  >
+                    <TabsTrigger value="MorningAzkar">{AzkarPage.MorningAzkar}</TabsTrigger>
+                    <TabsTrigger value="EvenAzkar">{AzkarPage.EvenAzkar}</TabsTrigger>
                 </TabsList>
                 <TabsContent value="MorningAzkar" className='space-y-4'>
                     {MorningAzkar?.content.map((zakr: Zekr) => (

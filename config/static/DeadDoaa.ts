@@ -1,4 +1,4 @@
-export const DiedDoaa = {
+export const DeadDoaa = {
     content: [
         {
             fristPart: "اللهم ابدل",

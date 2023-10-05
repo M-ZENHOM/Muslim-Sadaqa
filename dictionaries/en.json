@@ -7,7 +7,7 @@
     { "title": "Quran", "href": "/" },
     { "title": "Azkar", "href": "/Azkar" },
     { "title": "Masbha", "href": "/Masbha" },
-    { "title": "Died Doaa", "href": "/DiedDoaa" }
+    { "title": "Dead Doaa", "href": "/DeadDoaa" }
   ],
   "SurahPage": {
     "surahBtn": "Next",
@@ -22,5 +22,15 @@
     "FavBoxTitle": "FAV LIST",
     "FavBoxSubTitle": "Empty",
     "FavBoxDiscription": "Start adding the surahs of the Quran that you read daily for easy access to them every day"
+  },
+  "AzkarPage": {
+    "Title": "Azkar",
+    "MorningAzkar": "MorningAzkar",
+    "EvenAzkar": "EvenAzkar"
+  },
+  "DeadDoaaPage": {
+    "Title": "Doaa For Dead With His Name",
+    "inputPlaceholder": "Enter the dead name",
+    "BtnTitle": "Show Doaa"
   }
 }

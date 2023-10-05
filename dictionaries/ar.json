@@ -6,7 +6,7 @@
   "NavMenu": [
     { "title": "القرأن", "href": "/" },
     { "title": "الاذكار", "href": "/Azkar" },
-    { "title": "دعاء للمتوفي", "href": "/DiedDoaa" },
+    { "title": "دعاء للمتوفي", "href": "/DeadDoaa" },
     { "title": "مسبحة", "href": "/Masbha" }
   ],
   "SurahPage": {
@@ -22,5 +22,15 @@
     "FavBoxTitle": "المفضلة",
     "FavBoxSubTitle": "فارغة",
     "FavBoxDiscription": "ابدأ بأضافة سور القرأن التي تقرأها يوميا لسهولة الوصول اليها كل يوم"
+  },
+  "AzkarPage": {
+    "Title": "الاذكار",
+    "MorningAzkar": "اذكار الصباح",
+    "EvenAzkar": "اذكار المساء"
+  },
+  "DeadDoaaPage": {
+    "Title": "دعاء للمتوفي بأسمه",
+    "inputPlaceholder": "اخل اسم المتوفي",
+    "BtnTitle": "اظهر الادعية"
   }
 }
