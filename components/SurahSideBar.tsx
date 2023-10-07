@@ -31,6 +31,7 @@ const SurahSideBar: FC<SurahSideBarProps> = ({ Surah, lang, SurahPage }) => {
                 <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 114 })} href={{ pathname: `/surah/${Surah.data.number + 1}` }} >{SurahPage.surahBtn}</Link>
                 <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 1 })} href={{ pathname: `/surah/${Surah.data.number - 1}` }} >{SurahPage.surahBtnTwo}</Link>
             </div>
+
         </Card>
     )
 }

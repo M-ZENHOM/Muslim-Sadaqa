@@ -24,19 +24,28 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum }) => 
     }, [isPlaying]);
 
     useEffect(() => {
-        if (audioRef.current) {
 
-            audioRef.current.addEventListener('timeupdate', () => {
-                setCurrentTime(audioRef.current?.currentTime || 0);
-                setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
-            });
+        const currentAudioRef = audioRef.current;
+        const timeUpdateHandler = () => {
+            setCurrentTime(audioRef.current?.currentTime || 0);
+            setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
+        };
 
-            audioRef.current.addEventListener('ended', () => {
-                setIsPlaying(false);
-                setCurrentTime(0);
-                setProgress(0);
-            });
-        }
+        const endedHandler = () => {
+            setIsPlaying(false);
+            setCurrentTime(0);
+            setProgress(0);
+        };
+
+        currentAudioRef && currentAudioRef.addEventListener('timeupdate', timeUpdateHandler);
+        currentAudioRef && currentAudioRef.addEventListener('ended', endedHandler);
+
+        // Cleanup function
+        return () => {
+            currentAudioRef && currentAudioRef.pause();
+            currentAudioRef && currentAudioRef.removeEventListener('timeupdate', timeUpdateHandler);
+            currentAudioRef && currentAudioRef.removeEventListener('ended', endedHandler);
+        };
     }, []);
 
 
@@ -44,10 +53,10 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum }) => 
         <div className='border border-primary/50 rounded-lg  bg-muted/25 bg-gradient-to-tr from-primary/25 to-50% p-6 '>
             <audio ref={audioRef} src={src} autoPlay={autoPlay} />
             <div className='flex items-center  justify-center'>
-                <Link className="hover:text-primary p-2 rounded-full" href={{ query: { ayahNum: ayahNum + 1, } }} >
+                <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 })} href={{ query: { ayahNum: ayahNum + 1, } }} >
                     <Icons.PlayNext />
                 </Link>
-                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying }, { "bg-primary": !isPlaying })}>
+                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying || progress > 0 }, { "bg-primary": !isPlaying })}>
                     {isPlaying ? <Icons.Stop /> : <Icons.Play />}
                 </Button>
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum <= 1 })} href={{ query: { ayahNum: ayahNum - 1, } }} >
