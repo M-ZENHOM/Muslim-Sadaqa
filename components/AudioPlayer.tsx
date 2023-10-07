@@ -26,10 +26,17 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum }) => 
     useEffect(() => {
 
         const currentAudioRef = audioRef.current;
+
+        const playHandler = () => {
+            setIsPlaying(true);
+            currentAudioRef && currentAudioRef.play();
+        };
+
         const timeUpdateHandler = () => {
             setCurrentTime(audioRef.current?.currentTime || 0);
             setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
         };
+
 
         const endedHandler = () => {
             setIsPlaying(false);
@@ -37,12 +44,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum }) => 
             setProgress(0);
         };
 
+        currentAudioRef && currentAudioRef.addEventListener('playing', playHandler);
         currentAudioRef && currentAudioRef.addEventListener('timeupdate', timeUpdateHandler);
         currentAudioRef && currentAudioRef.addEventListener('ended', endedHandler);
 
         // Cleanup function
         return () => {
             currentAudioRef && currentAudioRef.pause();
+            currentAudioRef && currentAudioRef.removeEventListener('playing', playHandler);
             currentAudioRef && currentAudioRef.removeEventListener('timeupdate', timeUpdateHandler);
             currentAudioRef && currentAudioRef.removeEventListener('ended', endedHandler);
         };
