@@ -1,5 +1,4 @@
 import axios, { isAxiosError } from "axios";
-import { toast } from "sonner";
 
 export const getRandomAyah = async (ayahNumber: number) => {
     try {
@@ -8,7 +7,8 @@ export const getRandomAyah = async (ayahNumber: number) => {
 
     } catch (error) {
         if (isAxiosError(error)) {
-            toast.error(error.message)
+            console.log(error.message);
+
         }
         return `${error} Fetching erorr on RandomAyah`
     }

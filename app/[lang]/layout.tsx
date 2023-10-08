@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Noto_Kufi_Arabic as SansArabic } from 'next/font/google'
+import { Inter, Noto_Kufi_Arabic as SansArabic } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import SiteHeader from '@/components/layouts/SiteHeader'
 import SiteFooter from '@/components/layouts/SiteFooter'
@@ -11,7 +10,7 @@ import { Locale } from '@/i18n-config';
 import { Toaster } from 'sonner'
 
 export const inter = Inter({ subsets: ['latin'] })
-export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['400'] })
+export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] })
 
 export const metadata: Metadata = {
   title: `${siteConfig.title}`,

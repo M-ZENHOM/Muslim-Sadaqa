@@ -1,5 +1,4 @@
 import axios, { isAxiosError } from "axios"
-import { toast } from 'sonner'
 
 
 export const getMusliumData = async (pathName: string) => {
@@ -8,7 +7,7 @@ export const getMusliumData = async (pathName: string) => {
         return res.data
     } catch (err) {
         if (isAxiosError(err)) {
-            toast.error(err.message)
+            console.log(err.message);
         }
         return `${err} Fetching erorr on MusliumData`
     }

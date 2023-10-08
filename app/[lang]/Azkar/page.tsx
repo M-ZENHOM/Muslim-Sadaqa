@@ -13,11 +13,13 @@ interface Zekr {
     repeat: number,
     bless: string
 }
+type AcceptedZekrType = "MorningAzkar" | "EvenAzkar";
 
 
 export default async function page({ params: { lang }, searchParams }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
     const { AzkarPage } = await getDictionary(lang)
-    const AzkarType = typeof searchParams.AzkarType === 'string' ? searchParams.AzkarType : "MorningAzkar"
+    const ZekrType = ["MorningAzkar", "EvenAzkar"];
+    const AzkarType = (ZekrType.includes(searchParams.AzkarType as AcceptedZekrType) ? searchParams.AzkarType : "MorningAzkar") as AcceptedZekrType;
     const Azkar = await getMusliumData(AzkarType)
     return (
         <Wrapper className='py-20' >

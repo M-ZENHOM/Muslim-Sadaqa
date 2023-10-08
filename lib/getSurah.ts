@@ -1,5 +1,4 @@
 import axios, { isAxiosError } from "axios";
-import { toast } from "sonner";
 
 export const getSurah = async (id: number) => {
     try {
@@ -7,7 +6,8 @@ export const getSurah = async (id: number) => {
         return res.data
     } catch (error) {
         if (isAxiosError(error)) {
-            toast.error(error.message)
+            console.log(error.message);
+
         }
         return `${error} Fetching erorr on single surah`
     }
