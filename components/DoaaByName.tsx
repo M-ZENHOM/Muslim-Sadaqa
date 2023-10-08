@@ -3,16 +3,18 @@ import React, { FC, useRef } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import DoaaName from './DoaaName'
-import { DeadDoaa } from '@/config/static/DeadDoaa'
+import { DeadDoaaType } from '@/types'
+
 
 interface DoaaByNameProps {
     DeadDoaaPage: {
         inputPlaceholder: string,
         BtnTitle: string
     }
+    DeadDoaa: DeadDoaaType[]
 }
 
-const DoaaByName: FC<DoaaByNameProps> = ({ DeadDoaaPage }) => {
+const DoaaByName: FC<DoaaByNameProps> = ({ DeadDoaaPage, DeadDoaa }) => {
     const [name, setName] = React.useState<string | undefined>("")
     const ref = useRef<HTMLInputElement>(null)
 
@@ -24,8 +26,8 @@ const DoaaByName: FC<DoaaByNameProps> = ({ DeadDoaaPage }) => {
 
             </div>
             {name && <div className='py-5 text-xl space-y-5 flex flex-col items-start'>
-                {DeadDoaa.content.map((doaa, i) => (
-                    <DoaaName key={i} fristPart={doaa.fristPart} SecPart={doaa.secPart} name={name} />
+                {DeadDoaa.map((doaa: DeadDoaaType, i: number) => (
+                    <DoaaName key={i} fristPart={doaa.fristPartOfDoaa} SecPart={doaa.secPartOfDoaa} name={name} />
                 ))}
             </div>}
         </div>

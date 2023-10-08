@@ -27,3 +27,8 @@ export interface PalestineDoaaType {
     arabic: string
     english: string
 }
+export interface DeadDoaaType {
+    fristPartOfDoaa: string
+    secPartOfDoaa: string
+
+}

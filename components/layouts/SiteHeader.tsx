@@ -8,8 +8,8 @@ const SiteHeader = async ({ lang }: { lang: Locale }) => {
     const { NavMenu } = await getDictionary(lang)
     return (
         <>
-            <MainNav lang={lang} NavMenu={NavMenu} />
-            <MobileNav lang={lang} NavMenu={NavMenu} />
+            <MainNav NavMenu={NavMenu} />
+            <MobileNav NavMenu={NavMenu} />
         </>
     )
 }

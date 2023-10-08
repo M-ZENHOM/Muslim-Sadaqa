@@ -9,13 +9,12 @@ import { Locale } from '@/i18n-config'
 import { getDictionary } from './dictionaries'
 import { getMusliumData } from '@/lib/getMusliumData'
 import { type QuranData } from '@/types'
-import { QuranFahras } from '@/config/static/QuranFahras'
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
   const { IndexPage } = await getDictionary(lang)
-  // const QuranFahras = await getMusliumData("QuranFahras")
+  const QuranFahras = await getMusliumData("QuranFahras")
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
@@ -27,7 +26,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
         <FavBox IndexPage={IndexPage} />
       </div>
       <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
-        {QuranFahras?.data.map((q) => (
+        {QuranFahras.map((q: QuranData) => (
           <SurhaBox key={q.number} number={q.number} name={q.name} numberOfAyahs={q.numberOfAyahs} englishName={q.englishName} lang={lang} />
         ))}
       </div>

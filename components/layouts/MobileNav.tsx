@@ -8,11 +8,10 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { ThemeToggle } from '../ThemeToggle'
 import { useRouter } from 'next/navigation'
-import { Locale } from '@/i18n-config'
 import LangToggle from '../LangToggle'
 
 
-function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string, IsNew?: boolean }[] }) {
+function MobileNav({ NavMenu }: { NavMenu: { title: string, href: string, IsNew?: boolean }[] }) {
     const router = useRouter()
     const [open, setOpen] = React.useState(false)
     const handleNavigate = (href: string) => {
@@ -37,7 +36,6 @@ function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, 
                             <ThemeToggle />
                             <LangToggle />
                         </div>
-
                     </SheetHeader>
                 </SheetContent>
             </Sheet>
