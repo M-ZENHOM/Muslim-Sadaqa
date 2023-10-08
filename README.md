@@ -15,7 +15,7 @@ This is a Sadqa Website for quran, azkar and doaa created with [Next.js](https:/
 ## API DATA
 
 - [Quran Cloud For Quran Data](https://alquran.cloud/)
-- [Azkar and Doaa is Static Data]
+- [Azkar and Doaa is a Private Api Server I made it with Glitch Server](https://glitch.com/)
 
 ## Deploy on Vercel
 
