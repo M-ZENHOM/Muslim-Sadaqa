@@ -12,7 +12,7 @@ import { Locale } from '@/i18n-config'
 import LangToggle from '../LangToggle'
 
 
-function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string, IsNew: boolean }[] }) {
+function MobileNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string, IsNew?: boolean }[] }) {
     const router = useRouter()
     const [open, setOpen] = React.useState(false)
     const handleNavigate = (href: string) => {

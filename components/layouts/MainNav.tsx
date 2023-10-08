@@ -6,7 +6,7 @@ import LangToggle from '../LangToggle'
 import { cn } from '@/lib/utils'
 
 
-function MainNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string, IsNew: boolean }[] }) {
+function MainNav({ lang, NavMenu }: { lang: Locale, NavMenu: { title: string, href: string, IsNew?: boolean }[] }) {
     return (
         <nav className='w-60 h-screen p-6 space-y-5 hidden md:flex md:flex-col'>
             <ul className='flex flex-col space-y-3 text-lg font-extrabold border border-primary/50 rounded-lg p-6 bg-muted/25 bg-gradient-to-tr from-primary/25 to-50%'>
