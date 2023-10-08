@@ -7,6 +7,7 @@
     { "title": "القرأن", "href": "/" },
     { "title": "الاذكار", "href": "/Azkar" },
     { "title": "دعاء للمتوفي", "href": "/DeadDoaa" },
+    { "title": "دعاء لفلسطين", "href": "/PalestineDoaa", "IsNew": true },
     { "title": "مسبحة", "href": "/Masbha" }
   ],
   "SurahPage": {
@@ -32,5 +33,8 @@
     "Title": "دعاء للمتوفي بأسمه",
     "inputPlaceholder": "اخل اسم المتوفي",
     "BtnTitle": "اظهر الادعية"
+  },
+  "PalestineDoaaPage": {
+    "Title": "أدعية لجنود المسلمين وفلسطين"
   }
 }
