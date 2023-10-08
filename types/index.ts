@@ -22,3 +22,8 @@ export interface SurahType {
     sajda: boolean
 
 }
+
+export interface PalestineDoaaType {
+    arabic: string
+    english: string
+}

@@ -8,7 +8,7 @@ import SiteFooter from '@/components/layouts/SiteFooter'
 import { siteConfig } from '@/config/site'
 import Providers from './Providers'
 import { Locale } from '@/i18n-config';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from 'sonner'
 
 export const inter = Inter({ subsets: ['latin'] })
 export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['400'] })
