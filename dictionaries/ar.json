@@ -13,7 +13,8 @@
   "SurahPage": {
     "surahBtn": "التالي",
     "surahBtnTwo": "السابق",
-    "Ayahs": "آيات"
+    "Ayahs": "آيات",
+    "SurahAudio": "تشغيل السوره كاملة"
   },
   "SearchPage": {
     "inputPlaceholder": "ماذا تريد أن تقرأ؟"

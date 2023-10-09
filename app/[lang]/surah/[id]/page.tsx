@@ -8,12 +8,14 @@ import { SurahType } from '@/types';
 import SurahSideBar from '@/components/SurahSideBar';
 import AyahBox from '@/components/AyahBox';
 import AudioPlayer from '@/components/AudioPlayer';
+import { getMusliumData } from '@/lib/getMusliumData';
 
 
 export default async function page({ params, searchParams }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
     const ayahNum = typeof searchParams.ayahNum === 'string' ? Number(searchParams.ayahNum) : 0
     const Surah = await getSurah(params.id);
     const { SurahPage } = await getDictionary(params.lang)
+    const reciters = await getMusliumData("reciters");
 
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>
@@ -28,9 +30,8 @@ export default async function page({ params, searchParams }: { params: { id: num
                     ))}
                 </ScrollArea>
                 <AudioPlayer src={`https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayahNum}.mp3`} autoPlay={true} ayahNum={ayahNum} />
-                {/* <audio src={`https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayahNum}.mp3`} autoPlay={ayahNum !== 1} controls className=' w-full h-full min-h-[45px] my-10' /> */}
             </div>
-            <SurahSideBar lang={params.lang} Surah={Surah} SurahPage={SurahPage} />
+            <SurahSideBar lang={params.lang} Surah={Surah} SurahPage={SurahPage} surahNumber={params.id} reciters={reciters} />
         </section>
     )
 }

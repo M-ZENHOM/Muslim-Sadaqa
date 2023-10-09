@@ -13,7 +13,8 @@
   "SurahPage": {
     "surahBtn": "Next",
     "surahBtnTwo": "Prev",
-    "Ayahs": "Ayahs"
+    "Ayahs": "Ayahs",
+    "SurahAudio": "Play Surah"
   },
   "SearchPage": {
     "inputPlaceholder": "What do you want to read?"
