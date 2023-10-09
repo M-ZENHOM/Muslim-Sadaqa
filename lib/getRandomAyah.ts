@@ -24,6 +24,6 @@ export const getRandomAyah = async (ayahNumber: number) => {
             console.error("Other Error:", error);
         }
         // re-throw the error 
-        throw new Error("Fetching data failed");
+        throw new Error("Fetching RandomAyah data failed");
     }
 }

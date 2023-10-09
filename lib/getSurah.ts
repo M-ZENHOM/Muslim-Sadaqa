@@ -23,6 +23,6 @@ export const getSurah = async (id: number) => {
             console.error("Other Error:", error);
         }
         // re-throw the error 
-        throw new Error("Fetching data failed");
+        throw new Error("Fetching Surah data failed");
     }
 }
