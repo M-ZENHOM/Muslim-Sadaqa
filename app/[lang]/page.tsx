@@ -7,15 +7,14 @@ import FavBox from '@/components/FavBox'
 import { getRandomAyah } from '@/lib/getRandomAyah'
 import { Locale } from '@/i18n-config'
 import { getDictionary } from './dictionaries'
+import { getMusliumData } from '@/lib/getMusliumData'
 import { type QuranData } from '@/types'
-import { promises as fs } from 'fs';
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
   const { IndexPage } = await getDictionary(lang)
-  const file = await fs.readFile(process.cwd() + '/config/QuranFahras.json', 'utf8');
-  const QuranFahras = JSON.parse(file);
+  const QuranFahras = await getMusliumData("QuranFahras")
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
