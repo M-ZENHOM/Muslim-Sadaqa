@@ -4,9 +4,8 @@ import axios, { type AxiosError } from "axios"
 export const getMusliumData = async (pathName: string) => {
     try {
         const res = await axios(`${process.env.MUSLIUM_API_URL}/${pathName}`)
-        if (res) {
-            return res.data
-        }
+        return res.data
+
     } catch (error) {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
