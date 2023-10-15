@@ -1,13 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { i18n } from './i18n-config'
 
-
-let locales = ["ar", "en"]
 export function middleware(request: NextRequest) {
-
     const pathname = request.nextUrl.pathname
     const lang = request.cookies.get('lang')?.value || "ar"
-    const pathnameIsMissingLocale = locales.every(
+    const pathnameIsMissingLocale = i18n.locales.every(
         (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`)
 
     // Redirect if there is no locale

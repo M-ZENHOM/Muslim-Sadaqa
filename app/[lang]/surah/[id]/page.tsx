@@ -1,14 +1,13 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
-import React from 'react'
 import { Icons } from '@/components/Icons';
-import { getSurah } from '@/lib/getSurah';
-import { getDictionary } from '../../dictionaries';
+import React from 'react'
 import { Locale } from '@/i18n-config';
 import { SurahType } from '@/types';
 import SurahSideBar from '@/components/SurahSideBar';
 import AyahBox from '@/components/AyahBox';
 import AudioPlayer from '@/components/AudioPlayer';
-import { getMusliumData } from '@/lib/getMusliumData';
+import { getMusliumData, getSurah } from '@/lib/getMusliumData';
+import { getDictionary } from '@/dictionaries';
 
 
 export default async function page({ params, searchParams }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
@@ -16,6 +15,7 @@ export default async function page({ params, searchParams }: { params: { id: num
     const Surah = await getSurah(params.id);
     const { SurahPage } = await getDictionary(params.lang)
     const reciters = await getMusliumData("reciters");
+
 
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>

@@ -48,8 +48,8 @@ const SurahSideBar: FC<SurahSideBarProps> = ({ Surah, lang, SurahPage, surahNumb
                 {lang === "en" && <h4>{Surah.data?.englishNameTranslation}</h4>}
                 <span>{Surah.data?.numberOfAyahs} {SurahPage.Ayahs}</span>
                 <span>{lang === "ar" ? Surah.data?.revelationType === "Medinan" ? "مدنيه" : "مكيه" : Surah.data?.revelationType}</span>
-                <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 114 })} href={{ pathname: `/surah/${Surah.data.number + 1}` }} >{SurahPage.surahBtn}</Link>
-                <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 1 })} href={{ pathname: `/surah/${Surah.data.number - 1}` }} >{SurahPage.surahBtnTwo}</Link>
+                {/* <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 114 })} href={{ pathname: `/${lang}/surah/${Surah.data.number + 1}` }} >{SurahPage.surahBtn}</Link>
+                <Link className={cn(buttonVariants({ variant: "default" }), { 'pointer-events-none opacity-50': Surah.data.number === 1 })} href={{ pathname: `/${lang}/surah/${Surah.data.number - 1}` }} >{SurahPage.surahBtnTwo}</Link> */}
             </div>
             <div className='flex flex-col gap-4 w-full rounded-lg  my-5'>
                 <h2>{SurahPage.SurahAudio}</h2>

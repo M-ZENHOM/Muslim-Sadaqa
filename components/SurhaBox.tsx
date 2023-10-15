@@ -19,7 +19,7 @@ const SurhaBox: FC<SurhaBoxProps> = ({ number, name, numberOfAyahs, englishName,
     const surahStore = useStore(useSurahStore, (state) => state)
     return (
         <div key={number} className='flex w-full  max-w-[350px] justify-between items-center p-4 py-8 bg-muted rounded-lg border hover:border-primary hover:bg-gradient-to-r hover:from-primary/10 group'>
-            <Link href={`surah/${number}`} className={cn('flex items-center justify-between space-x-4  w-full')}>
+            <Link href={`/${lang}/surah/${number}`} className={cn('flex items-center justify-between space-x-4  w-full')}>
                 <span className="w-[35px] h-[35px] bg-gray-300 dark:bg-black rounded-full text-center leading-[35px] group-hover:bg-primary">
                     {number}
                 </span>

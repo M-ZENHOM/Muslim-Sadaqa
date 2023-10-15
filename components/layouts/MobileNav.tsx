@@ -9,9 +9,10 @@ import { siteConfig } from '@/config/site'
 import { ThemeToggle } from '../ThemeToggle'
 import { useRouter } from 'next/navigation'
 import LangToggle from '../LangToggle'
+import { Locale } from '@/i18n-config'
 
 
-function MobileNav({ NavMenu }: { NavMenu: { title: string, href: string, IsNew?: boolean }[] }) {
+function MobileNav({ NavMenu, lang }: { NavMenu: { title: string, href: string, IsNew?: boolean }[], lang: Locale }) {
     const router = useRouter()
     const [open, setOpen] = React.useState(false)
     const handleNavigate = (href: string) => {
@@ -29,7 +30,7 @@ function MobileNav({ NavMenu }: { NavMenu: { title: string, href: string, IsNew?
                     <SheetHeader className='py-5 '>
                         <ul className='flex flex-col space-y-3 text-lg font-extrabold'>
                             {NavMenu.map((link, i) => (
-                                <button onClick={() => handleNavigate(link.href)} key={i} className={cn('bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300', { "bg-green-500/50": link.IsNew })} >{link.title}</button>
+                                <button onClick={() => handleNavigate(`/${lang}${link.href}`)} key={i} className={cn('bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300', { "bg-green-500/50": link.IsNew })} >{link.title}</button>
                             ))}
                         </ul>
                         <div className='flex flex-col items-baseline bottom-5 absolute space-y-5'>

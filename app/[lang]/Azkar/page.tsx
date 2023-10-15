@@ -1,12 +1,11 @@
 import Wrapper from '@/components/Wrapper'
-import React from 'react'
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/Icons';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Locale } from '@/i18n-config';
-import { getDictionary } from '../dictionaries';
 import { getMusliumData } from '@/lib/getMusliumData';
 import Link from 'next/link';
+import { getDictionary } from '@/dictionaries';
 
 interface Zekr {
     zekr: string,

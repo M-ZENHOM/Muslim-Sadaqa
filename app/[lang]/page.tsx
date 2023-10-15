@@ -4,17 +4,16 @@ import Wrapper from '@/components/Wrapper'
 import { Card, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import FavBox from '@/components/FavBox'
-import { getRandomAyah } from '@/lib/getRandomAyah'
 import { Locale } from '@/i18n-config'
-import { getDictionary } from './dictionaries'
-import { getMusliumData } from '@/lib/getMusliumData'
-import { type QuranData } from '@/types'
+import { getDictionary } from '@/dictionaries'
+import { getRandomAyah } from '@/lib/getMusliumData'
+import { QuranFahras } from '@/config/QuranFahras'
+
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah(Math.floor(Math.random() * 6236))
   const { IndexPage } = await getDictionary(lang)
-  const QuranFahras = await getMusliumData("QuranFahras")
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
@@ -26,7 +25,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
         <FavBox IndexPage={IndexPage} />
       </div>
       <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
-        {QuranFahras.map((q: QuranData) => (
+        {QuranFahras.map((q) => (
           <SurhaBox key={q.number} number={q.number} name={q.name} numberOfAyahs={q.numberOfAyahs} englishName={q.englishName} lang={lang} />
         ))}
       </div>

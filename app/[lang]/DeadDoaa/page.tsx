@@ -1,9 +1,8 @@
 import DoaaByName from '@/components/DoaaByName'
 import Wrapper from '@/components/Wrapper'
-import React from 'react'
-import { getDictionary } from '../dictionaries'
 import { Locale } from '@/i18n-config'
 import { getMusliumData } from '@/lib/getMusliumData'
+import { getDictionary } from '@/dictionaries'
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { DeadDoaaPage } = await getDictionary(lang)

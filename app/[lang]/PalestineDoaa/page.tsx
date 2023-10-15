@@ -2,10 +2,9 @@ import { Icons } from '@/components/Icons'
 import Wrapper from '@/components/Wrapper'
 import { Card, CardTitle } from '@/components/ui/card'
 import { Locale } from '@/i18n-config'
-import React from 'react'
-import { getDictionary } from '../dictionaries'
 import { getMusliumData } from '@/lib/getMusliumData'
 import { PalestineDoaaType } from '@/types'
+import { getDictionary } from '@/dictionaries'
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { PalestineDoaaPage } = await getDictionary(lang)
