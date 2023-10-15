@@ -6,19 +6,14 @@ import { cn } from '@/lib/utils'
 import FavBox from '@/components/FavBox'
 import { Locale } from '@/i18n-config'
 import { getDictionary } from '@/dictionaries'
-import { getRandomAyah } from '@/lib/getMusliumData'
+import { getQuranFahras, getRandomAyah } from '@/lib/getMusliumData'
 import { QuranData } from '@/types'
-import axios from 'axios'
-
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah()
   const { IndexPage } = await getDictionary(lang)
-  //Read Quran Fahras Locally
-  // const quran = await fs.readFile(process.cwd() + '/config/db/QuranFahras.json', 'utf-8')
-  // const QuranFahras = JSON.parse(quran);
-  const QuranFahras: QuranData[] = await axios.get(`https://muslim-sadqa.vercel.app/${lang}/api/quran`).then((res) => res.data)
+  const QuranFahras: QuranData[] = await getQuranFahras(lang)
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
