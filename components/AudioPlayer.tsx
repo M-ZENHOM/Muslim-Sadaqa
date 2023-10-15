@@ -18,44 +18,52 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
     const [progress, setProgress] = useState<number>(0);
     const audioRef = React.useRef<HTMLAudioElement>(null);
 
+
     useEffect(() => {
-        if (audioRef.current) {
-            isPlaying ? audioRef.current.play() : audioRef.current.pause();
+        const currentAudioRef = audioRef.current;
+        if (currentAudioRef) {
+            isPlaying ? currentAudioRef.play() : currentAudioRef.pause();
         }
     }, [isPlaying]);
 
+    //Watch for changes in the audio src 
     useEffect(() => {
-
         const currentAudioRef = audioRef.current;
+        if (currentAudioRef && isPlaying) {
+            currentAudioRef.pause();
+            setIsPlaying(false);
+        }
 
+    }, [src]);
+
+    useEffect(() => {
+        const currentAudioRef = audioRef.current!;
         const playHandler = () => {
             setIsPlaying(true);
-            currentAudioRef && currentAudioRef.play();
-        };
+            currentAudioRef.play();
 
+        };
         const timeUpdateHandler = () => {
             setCurrentTime(audioRef.current?.currentTime || 0);
             setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
+
         };
-
-
         const endedHandler = () => {
             setIsPlaying(false);
             setCurrentTime(0);
             setProgress(0);
         };
 
-        currentAudioRef && currentAudioRef.addEventListener('playing', playHandler);
-        currentAudioRef && currentAudioRef.addEventListener('timeupdate', timeUpdateHandler);
-        currentAudioRef && currentAudioRef.addEventListener('ended', endedHandler);
+        currentAudioRef.addEventListener('playing', playHandler);
+        currentAudioRef.addEventListener('timeupdate', timeUpdateHandler);
+        currentAudioRef.addEventListener('ended', endedHandler);
 
 
         // Cleanup function
         return () => {
-            currentAudioRef && currentAudioRef.pause();
-            currentAudioRef && currentAudioRef.removeEventListener('playing', playHandler);
-            currentAudioRef && currentAudioRef.removeEventListener('timeupdate', timeUpdateHandler);
-            currentAudioRef && currentAudioRef.removeEventListener('ended', endedHandler);
+            currentAudioRef.removeEventListener('playing', playHandler);
+            currentAudioRef.removeEventListener('timeupdate', timeUpdateHandler);
+            currentAudioRef.removeEventListener('ended', endedHandler);
         };
     }, []);
 
@@ -74,8 +82,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1, } }} >
                     <Icons.PlayNext />
                 </Link>
-                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying || progress > 0 }, { "bg-primary": !isPlaying })}>
-                    {isPlaying && currentTime === 0 ? <Icons.Stop /> : <Icons.Play />}
+                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying }, { "bg-primary": !isPlaying })}>
+                    {isPlaying && currentTime !== 0 ? <Icons.Stop /> : <Icons.Play />}
                 </Button>
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum && ayahNum <= 1 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum - 1, } }} >
                     <Icons.PlayPrev />

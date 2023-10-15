@@ -30,7 +30,7 @@ function MobileNav({ NavMenu, lang }: { NavMenu: { title: string, href: string, 
                     <SheetHeader className='py-5 '>
                         <ul className='flex flex-col space-y-3 text-lg font-extrabold'>
                             {NavMenu.map((link, i) => (
-                                <button onClick={() => handleNavigate(`/${lang}${link.href}`)} key={i} className={cn('bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300', { "bg-green-500/50": link.IsNew })} >{link.title}</button>
+                                <button aria-label={link.title} onClick={() => handleNavigate(`/${lang}${link.href}`)} key={i} className={cn('bg-gradient-to-tl from-primary/25 to-60% p-2 rounded-lg hover:bg-primary/50 transition-all duration-300', { "bg-green-500/50": link.IsNew })} >{link.title}</button>
                             ))}
                         </ul>
                         <div className='flex flex-col items-baseline bottom-5 absolute space-y-5'>

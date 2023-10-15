@@ -15,8 +15,6 @@ export default async function page({ params, searchParams }: { params: { id: num
     const Surah = await getSurah(params.id);
     const { SurahPage } = await getDictionary(params.lang)
     const reciters = await getMusliumData("reciters");
-
-
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>
             <div className='flex flex-col h-full flex-1'>
@@ -29,7 +27,7 @@ export default async function page({ params, searchParams }: { params: { id: num
                         </div>
                     ))}
                 </ScrollArea>
-                <AudioPlayer src={`https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayahNum}.mp3`} autoPlay={true} ayahNum={ayahNum} />
+                <AudioPlayer src={`${ayahNum !== 0 ? `https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayahNum}.mp3` : '#'}`} autoPlay={true} ayahNum={ayahNum} />
             </div>
             <SurahSideBar lang={params.lang} Surah={Surah} SurahPage={SurahPage} surahNumber={params.id} reciters={reciters} />
         </section>

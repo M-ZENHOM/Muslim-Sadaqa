@@ -1,4 +1,4 @@
-export const QuranFahras = [
+[
   {
     "number": 1,
     "name": "سُورَةُ ٱلْفَاتِحَةِ",

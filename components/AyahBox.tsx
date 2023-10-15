@@ -20,8 +20,6 @@ interface AyahBoxProps {
 }
 
 const AyahBox: FC<AyahBoxProps> = ({ Surah, sur, ayahNum }) => {
-    console.log(sur);
-
     return (
         <Popover modal={false}>
             <PopoverTrigger className={cn('text-2xl p-2 group-hover:text-primary transition-all duration-300 text-center w-full',

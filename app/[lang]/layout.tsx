@@ -1,16 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter, Noto_Kufi_Arabic as SansArabic } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import SiteHeader from '@/components/layouts/SiteHeader'
 import SiteFooter from '@/components/layouts/SiteFooter'
 import { siteConfig } from '@/config/site'
 import Providers from './Providers'
 import { Locale } from '@/i18n-config';
-import { Toaster } from 'sonner'
-
-export const inter = Inter({ subsets: ['latin'] })
-export const arabicSans = SansArabic({ subsets: ['arabic'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] })
+import { arabicSans, inter } from './fonts';
 
 export const metadata: Metadata = {
   title: `${siteConfig.title}`,
@@ -29,7 +25,6 @@ export default function RootLayout({ children, params }: { children: React.React
             {children}
           </main>
           <SiteFooter />
-          <Toaster />
           <Analytics />
         </Providers>
       </body>

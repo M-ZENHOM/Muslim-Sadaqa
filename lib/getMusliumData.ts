@@ -56,9 +56,11 @@ export const getSurah = async (id: number) => {
     }
 }
 
-export const getRandomAyah = async (ayahNumber: number) => {
+
+
+export const getRandomAyah = async () => {
     try {
-        const res = await axios.get(`${process.env.API_URL}/ayah/${ayahNumber}/ar.alafasy`)
+        const res = await axios.get(`${process.env.API_URL}/ayah/${Math.floor(Math.random() * 6236)}/ar.alafasy`)
         return res.data
 
     } catch (error) {
