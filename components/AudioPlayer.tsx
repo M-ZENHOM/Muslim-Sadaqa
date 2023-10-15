@@ -69,7 +69,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
 
     return (
         <div className={cn('border border-primary/50 rounded-lg  bg-muted/25 bg-gradient-to-tr from-primary/25 to-50% p-6', className)}>
-            {ayahNum !== 0 && <audio ref={audioRef} src={src} autoPlay={autoPlay} />}
+            <audio ref={audioRef} src={src} autoPlay={autoPlay} />
             <div className='flex items-center  justify-center'>
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1, } }} >
                     <Icons.PlayNext />
