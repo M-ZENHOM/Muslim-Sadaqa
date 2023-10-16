@@ -21,9 +21,8 @@ const DoaaByName: FC<DoaaByNameProps> = ({ DeadDoaaPage, DeadDoaa }) => {
     return (
         <div >
             <div className='flex  items-center md:justify-between flex-wrap md:flex-nowrap justify-center space-y-3 md:space-y-0'>
-                <Input ref={ref} defaultValue={ref.current?.value} placeholder={DeadDoaaPage.inputPlaceholder} />
+                <Input onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && setName(ref.current?.value)} ref={ref} defaultValue={ref.current?.value} placeholder={DeadDoaaPage.inputPlaceholder} />
                 <Button onClick={() => setName(ref.current?.value)} className='mr-2 w-full max-w-[10rem]' > {DeadDoaaPage.BtnTitle}</Button>
-
             </div>
             {name && <div className='py-5 text-xl space-y-5 flex flex-col items-start'>
                 {DeadDoaa.map((doaa: DeadDoaaType, i: number) => (

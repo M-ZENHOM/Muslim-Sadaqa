@@ -6,7 +6,7 @@ import { getDictionary } from '@/dictionaries'
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { DeadDoaaPage } = await getDictionary(lang)
-    const DeadDoaa = await getMusliumData("DeadDoaa")
+    const DeadDoaa = await getMusliumData("DeadDoaa", lang)
     return (
         <Wrapper className='py-20'>
             <h2 className='text-2xl md:text-5xl font-extrabold  py-10 '> {DeadDoaaPage.Title}</h2>

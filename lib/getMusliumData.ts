@@ -1,11 +1,10 @@
 import { Locale } from "@/i18n-config";
 import axios, { type AxiosError } from "axios"
 
-export const getMusliumData = async (pathName: string) => {
+export const getMusliumData = async (pathName: string, lang: Locale) => {
     try {
-        const res = await axios(`${process.env.MUSLIUM_API_URL}/${pathName}`)
+        const res = await axios.get(`${process.env.NODE_ENV === "production" ? process.env.PRODCTUION_URL : 'http://localhost:3000/'}${lang}/api/${pathName}`)
         return res.data
-
     } catch (error) {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
@@ -25,7 +24,7 @@ export const getMusliumData = async (pathName: string) => {
             console.error("Other Error:", error);
         }
         // re-throw the error 
-        throw new Error("Fetching data failed");
+        throw new Error("QuranFahras  data failed");
     }
 };
 

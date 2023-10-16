@@ -8,7 +8,7 @@ import { getDictionary } from '@/dictionaries'
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { PalestineDoaaPage } = await getDictionary(lang)
-    const PalestineDoaa = await getMusliumData("PalestineDoaa")
+    const PalestineDoaa = await getMusliumData("PalestineDoaa", lang)
     return (
         <Wrapper className='space-y-4 mx-auto py-20  '>
             <h2 className='text-2xl md:text-5xl font-extrabold text-center py-4 flex items-center justify-between'> {PalestineDoaaPage.Title} <Icons.Doaa className='w-14 h-14' /></h2>
