@@ -1,0 +1,62 @@
+[
+  {
+    "reciter_id": "ar.abdulbasitmujawwad",
+    "name": {
+      "en": "Abdul Basit Abdul Samad",
+      "ar": "عبد الباسط عبد الصمد"
+    },
+    "type": {
+      "en": "Mujawwad",
+      "ar": "مجود"
+    },
+    "poster": "/reciters/Abdelbasset-abdessamad.jpeg"
+  },
+  {
+    "reciter_id": "ar.muhammadsiddiqalminshawimujawwad",
+    "name": {
+      "en": "Muhammad Siddiq Al-Minshawi",
+      "ar": "محمد صديق المنشاوي"
+    },
+    "type": {
+      "en": "Mujawwad",
+      "ar": "مجود"
+    },
+    "poster": "/reciters/minshawi.jpeg"
+  },
+  {
+    "reciter_id": "ar.nasseralqatami",
+    "name": {
+      "en": "Nasser Alqatami",
+      "ar": "ناصر القطامي"
+    },
+    "type": {
+      "en": "Murattal",
+      "ar": "مرتل"
+    },
+    "poster": "/reciters/alqatami.jpeg"
+  },
+  {
+    "reciter_id": "ar.alafasy",
+    "name": {
+      "en": "Mishary Alafasy",
+      "ar": "مشاري العفاسي"
+    },
+    "type": {
+      "en": "Murattal",
+      "ar": "مرتل"
+    },
+    "poster": "/reciters/afasy.jpeg"
+  },
+  {
+    "reciter_id": "ar.yasseraldossari",
+    "name": {
+      "en": "Yasser Al Dosari",
+      "ar": "ياسر الدوسري"
+    },
+    "type": {
+      "en": "Murattal",
+      "ar": "مرتل"
+    },
+    "poster": "/reciters/yasser-dosry.png"
+  }
+]

@@ -14,7 +14,7 @@ export default async function page({ params, searchParams }: { params: { id: num
     const ayahNum = typeof searchParams.ayahNum === 'string' ? Number(searchParams.ayahNum) : 0
     const Surah = await getSurah(params.id);
     const { SurahPage } = await getDictionary(params.lang)
-    const reciters = await getMusliumData("reciters");
+    const reciters = await getMusliumData("reciters", params.lang);
     return (
         <section className='flex flex-col lg:flex-row gap-4 px-4'>
             <div className='flex flex-col h-full flex-1'>
