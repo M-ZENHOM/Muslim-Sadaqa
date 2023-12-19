@@ -7,7 +7,14 @@ interface AnimateProps {
 }
 
 const Animate: FC<AnimateProps> = ({ children }) => {
-    return <motion.div initial={{ translateY: "-20%" }} animate={{ translateY: "10%" }} exit={{ translateY: 0 }} transition={{ duration: 0.4 }}>{children}</motion.div>
+    return (
+        <motion.div
+            initial={{ translateY: "-20%" }}
+            animate={{ translateY: "10%" }}
+            exit={{ translateY: 0 }}
+            transition={{ duration: 0.4 }}
+        >{children}</motion.div>
+    )
 }
 
 export default Animate

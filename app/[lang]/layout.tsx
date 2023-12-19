@@ -6,11 +6,14 @@ import SiteFooter from '@/components/layouts/SiteFooter'
 import { siteConfig } from '@/config/site'
 import Providers from './Providers'
 import { Locale } from '@/i18n-config';
-import { arabicSans, inter } from './fonts';
+import { arabicSans, inter } from '../../lib/fonts';
 
 export const metadata: Metadata = {
   title: `${siteConfig.title}`,
   description: siteConfig.description,
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode, params: { lang: Locale } }) {

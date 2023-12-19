@@ -9,21 +9,16 @@ export const getMusliumData = async (pathName: string, lang: Locale) => {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
             if (axiosError.response) {
-                // The client was given an error response (5xx, 4xx)
                 console.error("Error Response Data:", axiosError.response.data);
                 console.error("Error Response Status:", axiosError.response.status);
             } else if (axiosError.request) {
-                // The client never received a response, and the request was never left
                 console.error("No Response Received");
             } else {
-                // Anything else
                 console.error("Other Axios Error:", axiosError.message);
             }
         } else {
-            // Anything else
             console.error("Other Error:", error);
         }
-        // re-throw the error 
         throw new Error("QuranFahras  data failed");
     }
 };
@@ -36,21 +31,16 @@ export const getQuranFahras = async (lang: Locale) => {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
             if (axiosError.response) {
-                // The client was given an error response (5xx, 4xx)
                 console.error("Error Response Data:", axiosError.response.data);
                 console.error("Error Response Status:", axiosError.response.status);
             } else if (axiosError.request) {
-                // The client never received a response, and the request was never left
                 console.error("No Response Received");
             } else {
-                // Anything else
                 console.error("Other Axios Error:", axiosError.message);
             }
         } else {
-            // Anything else
             console.error("Other Error:", error);
         }
-        // re-throw the error 
         throw new Error("QuranFahras  data failed");
     }
 }
@@ -64,21 +54,16 @@ export const getSurah = async (id: number) => {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
             if (axiosError.response) {
-                // The client was given an error response (5xx, 4xx)
                 console.error("Error Response Data:", axiosError.response.data);
                 console.error("Error Response Status:", axiosError.response.status);
             } else if (axiosError.request) {
-                // The client never received a response, and the request was never left
                 console.error("No Response Received");
             } else {
-                // Anything else
                 console.error("Other Axios Error:", axiosError.message);
             }
         } else {
-            // Anything else
             console.error("Other Error:", error);
         }
-        // re-throw the error 
         throw new Error("Fetching Surah data failed");
     }
 }
@@ -94,21 +79,16 @@ export const getRandomAyah = async () => {
         if (axios.isAxiosError(error)) {
             const axiosError: AxiosError = error;
             if (axiosError.response) {
-                // The client was given an error response (5xx, 4xx)
                 console.error("Error Response Data:", axiosError.response.data);
                 console.error("Error Response Status:", axiosError.response.status);
             } else if (axiosError.request) {
-                // The client never received a response, and the request was never left
                 console.error("No Response Received");
             } else {
-                // Anything else
                 console.error("Other Axios Error:", axiosError.message);
             }
         } else {
-            // Anything else
             console.error("Other Error:", error);
         }
-        // re-throw the error 
         throw new Error("Fetching RandomAyah data failed");
     }
 }
