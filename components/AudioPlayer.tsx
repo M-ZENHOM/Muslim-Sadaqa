@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { Icons } from './Icons';
 import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Progress } from './ui/progress';
 
 interface AudioPlayerProps {
     src: string;
@@ -18,7 +20,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
     const [progress, setProgress] = useState<number>(0);
     const audioRef = React.useRef<HTMLAudioElement>(null);
 
-
     useEffect(() => {
         const currentAudioRef = audioRef.current;
         if (currentAudioRef) {
@@ -26,46 +27,24 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
         }
     }, [isPlaying]);
 
-    //Watch for changes in the audio src 
-    useEffect(() => {
-        const currentAudioRef = audioRef.current;
-        if (currentAudioRef && isPlaying) {
-            currentAudioRef.pause();
-            setIsPlaying(false);
-        }
+    const playHandler = () => {
+        setIsPlaying(true);
+        audioRef?.current?.play();
 
-    }, [src]);
+    };
+    const timeUpdateHandler = () => {
+        setCurrentTime(audioRef.current?.currentTime || 0);
+        setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
 
-    useEffect(() => {
-        const currentAudioRef = audioRef.current!;
-        const playHandler = () => {
-            setIsPlaying(true);
-            currentAudioRef.play();
+    };
 
-        };
-        const timeUpdateHandler = () => {
-            setCurrentTime(audioRef.current?.currentTime || 0);
-            setProgress((audioRef.current?.currentTime! / audioRef.current?.duration!) * 100 || 0);
-
-        };
-        const endedHandler = () => {
-            setIsPlaying(false);
-            setCurrentTime(0);
-            setProgress(0);
-        };
-
-        currentAudioRef.addEventListener('playing', playHandler);
-        currentAudioRef.addEventListener('timeupdate', timeUpdateHandler);
-        currentAudioRef.addEventListener('ended', endedHandler);
+    const endHandler = () => {
+        setIsPlaying(false);
+        setCurrentTime(0);
+        setProgress(0);
+    };
 
 
-        // Cleanup function
-        return () => {
-            currentAudioRef.removeEventListener('playing', playHandler);
-            currentAudioRef.removeEventListener('timeupdate', timeUpdateHandler);
-            currentAudioRef.removeEventListener('ended', endedHandler);
-        };
-    }, []);
 
     const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (audioRef.current) {
@@ -77,19 +56,19 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
 
     return (
         <div className={cn('border border-primary/50 rounded-lg  bg-muted/25 bg-gradient-to-tr from-primary/25 to-50% p-6', className)}>
-            <audio ref={audioRef} src={src} autoPlay={autoPlay} />
+            <audio ref={audioRef} src={src} onPlay={playHandler} onEnded={endHandler} onTimeUpdate={timeUpdateHandler} autoPlay={autoPlay} />
             <div className='flex items-center  justify-center'>
-                <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1, } }} >
+                <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1 } }} scroll={false} >
                     <Icons.PlayNext />
                 </Link>
                 <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying }, { "bg-primary": !isPlaying })}>
                     {isPlaying && currentTime !== 0 ? <Icons.Stop /> : <Icons.Play />}
                 </Button>
-                <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum && ayahNum <= 1 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum - 1, } }} >
+                <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum && ayahNum <= 1 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum - 1 } }} scroll={false} >
                     <Icons.PlayPrev />
                 </Link>
             </div>
-            <input className='w-full bg-primary mt-4 border-primary' type="range" min="0" max="100" value={progress} onChange={handleProgressChange} />
+            <Input className='w-full mt-4' type="range" min="0" max="100" value={progress} onTimeUpdate={handleProgressChange} onChange={handleProgressChange} />
             <div className="text-center mt-2">
                 {formatTime(currentTime)} / {formatTime(audioRef.current?.duration || 0)}
             </div>

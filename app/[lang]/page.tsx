@@ -26,7 +26,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
       </div>
       <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
         {QuranFahras.map((q) => (
-          <SurhaBox key={q.number} number={q.number} name={q.name} numberOfAyahs={q.numberOfAyahs} englishName={q.englishName} lang={lang} />
+          <SurhaBox key={q.number} {...q} lang={lang} />
         ))}
       </div>
     </Wrapper>
