@@ -1,7 +1,7 @@
 import Wrapper from '@/components/Wrapper'
 import { Skeleton } from '@/components/ui/skeleton'
 
-export default function loading() {
+function loading() {
     return (
         <Wrapper className='py-20'>
             <h2 className='text-5xl font-extrabold text-center py-10 flex items-center justify-between'> <Skeleton className="w-[100px] h-[20px] rounded-md " />  <Skeleton className="w-[50px] h-[50px] rounded-full " /></h2>
@@ -17,3 +17,7 @@ export default function loading() {
         </Wrapper>
     )
 }
+
+
+
+export default loading
