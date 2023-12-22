@@ -6,14 +6,15 @@ import { cn } from '@/lib/utils'
 import FavBox from '@/components/FavBox'
 import { Locale } from '@/i18n-config'
 import { getDictionary } from '@/dictionaries'
-import { getQuranFahras, getRandomAyah } from '@/lib/getMusliumData'
+import { getRandomAyah } from '@/lib/getMusliumData'
 import { QuranData } from '@/types'
+import { getQuranSurahs } from '@/lib/getQuranSurahs'
 
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah()
   const { IndexPage } = await getDictionary(lang)
-  const QuranFahras: QuranData[] = await getQuranFahras(lang)
+  const QuranSurahs = await getQuranSurahs();
   return (
     <Wrapper>
       <Icons.QuranKareem className='w-4/12 mx-auto py-28 md:py-20' />
@@ -24,11 +25,15 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
         </Card>
         <FavBox IndexPage={IndexPage} />
       </div>
-      <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
-        {QuranFahras.map((q) => (
-          <SurhaBox key={q.number} {...q} lang={lang} />
-        ))}
-      </div>
+      {QuranSurahs?.code === 200 ? (
+        <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>
+          {QuranSurahs.data.map((q: QuranData) => (
+            <SurhaBox key={q.number} {...q} lang={lang} />
+          ))}
+        </div>
+      ) : (
+        <p className='w-full text-center text-xl py-20 text-red-600'>*{lang === 'ar' ? 'فى مشكله في السرفر يا كينج تعالى كمان شوية ' : 'Something went wrong, try again later!'}</p>
+      )}
     </Wrapper>
   )
 }

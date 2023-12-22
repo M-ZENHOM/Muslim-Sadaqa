@@ -10,27 +10,6 @@ export const getMusliumData = async (pathName: string, lang: Locale) => {
     }
 };
 
-export const getQuranFahras = async (lang: Locale) => {
-    try {
-        const res = await axios.get(`${process.env.NODE_ENV === "production" ? process.env.PRODCTUION_URL : 'http://localhost:3000/'}${lang}/api/quran`)
-        return res.data
-    } catch (error) {
-        axios.isAxiosError(error) && console.error(error)
-    }
-}
-
-
-export const getSurah = async (id: number) => {
-    try {
-        const res = await axios.get(`${process.env.API_URL}/surah/${id}/ar.alafasy`)
-        return res.data
-    } catch (error) {
-        axios.isAxiosError(error) && console.error(error)
-    }
-}
-
-
-
 export const getRandomAyah = async () => {
     try {
         const res = await axios.get(`${process.env.API_URL}/ayah/${Math.floor(Math.random() * 6236)}/ar.alafasy`)
