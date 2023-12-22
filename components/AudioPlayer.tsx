@@ -1,11 +1,10 @@
 "use client"
 import { cn, formatTime } from '@/lib/utils';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Icons } from './Icons';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Progress } from './ui/progress';
 
 interface AudioPlayerProps {
     src: string;
@@ -15,17 +14,17 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, className }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState<number>(0);
-    const [progress, setProgress] = useState<number>(0);
+    const [isPlaying, setIsPlaying] = React.useState(false);
+    const [currentTime, setCurrentTime] = React.useState<number>(0);
+    const [progress, setProgress] = React.useState<number>(0);
     const audioRef = React.useRef<HTMLAudioElement>(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         const currentAudioRef = audioRef.current;
         if (currentAudioRef) {
             isPlaying ? currentAudioRef.play() : currentAudioRef.pause();
         }
-    }, [isPlaying]);
+    }, [isPlaying, src]);
 
     const playHandler = () => {
         setIsPlaying(true);
@@ -61,7 +60,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1 } }} scroll={false} >
                     <Icons.PlayNext />
                 </Link>
-                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-red-500": isPlaying }, { "bg-primary": !isPlaying })}>
+                <Button variant="outline" size="icon" disabled={ayahNum === 0} onClick={() => setIsPlaying(!isPlaying)} className={cn(`p-2 px-3 text-white rounded-full`, { "bg-cyan-800": isPlaying }, { "bg-primary text-primary-foreground": !isPlaying })}>
                     {isPlaying && currentTime !== 0 ? <Icons.Stop /> : <Icons.Play />}
                 </Button>
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum && ayahNum <= 1 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum - 1 } }} scroll={false} >

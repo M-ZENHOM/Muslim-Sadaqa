@@ -14,7 +14,15 @@
     "surahBtn": "التالي",
     "surahBtnTwo": "السابق",
     "Ayahs": "آيات",
-    "SurahAudio": "تشغيل السوره كاملة"
+    "SurahAudio": "تشغيل السوره كاملة",
+    "Setting": "الاعدادات",
+    "SettingActionBtn": "رستر الاعدادت",
+    "Reciter": "اختار صوت القارئ المفضل اليك",
+    "FontSize": "تغيير حجم الخط",
+    "FontStyle": "تغيير استايل الخط",
+    "FontBold": "خط العريض",
+    "FontNormal": "خط عادي",
+    "AyahAudio": "تشغيل الاية "
   },
   "SearchPage": {
     "inputPlaceholder": "ماذا تريد أن تقرأ؟"

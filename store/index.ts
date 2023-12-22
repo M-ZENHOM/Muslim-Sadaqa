@@ -11,6 +11,72 @@ interface SurahStore {
     toggleSurah: (title: string, surahID: number) => void;
     removeFromList: (id: number) => void;
 }
+interface SettingType {
+    settings: {
+        fontSize: string
+        fontStyle: string
+        reciter: string
+    }[]
+    setFontSize: (fontSize: string) => void;
+    setFontStyle: (fontStyle: string) => void;
+    setReciter: (reciter: string) => void;
+    resetSetting: () => void;
+}
+
+const defaultSetting = {
+    fontSize: "18",
+    fontStyle: "normal",
+    reciter: "ar.alafasy"
+}
+
+export const useSettings = create<SettingType>()(
+    persist(
+        (set, get) => ({
+            settings: [
+                defaultSetting
+            ],
+            setFontSize: (fontSize: string) => {
+                set((state) => {
+                    return {
+                        settings: [
+                            { fontSize, fontStyle: state.settings[0]!.fontStyle, reciter: state.settings[0]!.reciter }
+                        ],
+                    };
+                });
+            },
+            setFontStyle: (fontStyle: string) => {
+                set((state) => {
+                    return {
+                        settings: [
+                            { fontStyle, fontSize: state.settings[0]!.fontSize, reciter: state.settings[0]!.reciter }
+                        ],
+                    };
+                });
+            },
+            setReciter: (reciter: string) => {
+                set((state) => {
+                    return {
+                        settings: [
+                            { fontSize: state.settings[0]!.fontSize, fontStyle: state.settings[0]!.fontStyle, reciter }
+                        ],
+                    };
+                });
+            },
+            resetSetting: () => {
+                set((state) => {
+                    return {
+                        settings: [
+                            defaultSetting
+                        ],
+                    };
+                });
+            },
+        }),
+        {
+            name: 'settings',
+        }
+    )
+)
 
 export const useSurahStore = create<SurahStore>()(
     persist(
@@ -48,3 +114,6 @@ export const useSurahStore = create<SurahStore>()(
         }
     )
 )
+
+
+

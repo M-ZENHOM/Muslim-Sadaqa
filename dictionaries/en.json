@@ -14,7 +14,15 @@
     "surahBtn": "Next",
     "surahBtnTwo": "Prev",
     "Ayahs": "Ayahs",
-    "SurahAudio": "Play Surah"
+    "SurahAudio": "Play Surah",
+    "Setting": "Settings",
+    "SettingActionBtn": "Reset Settings",
+    "Reciter": "Choose your fav Reciter",
+    "FontSize": "Font Size",
+    "FontStyle": "Font Style",
+    "FontBold": "Font Bold",
+    "FontNormal": "Font Normal",
+    "AyahAudio": "Play Ayah"
   },
   "SearchPage": {
     "inputPlaceholder": "What do you want to read?"
