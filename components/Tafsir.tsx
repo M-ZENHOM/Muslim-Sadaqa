@@ -9,10 +9,11 @@ import { Skeleton } from './ui/skeleton'
 interface TafsirProps {
     ayahNum: number
     ayahText: string
+    lang: string
 }
 
-const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText }) => {
-    const { data, isLoading } = useQuery(["ayah", ayahNum], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum}/ar.muyassar`).then((res) => res.data.data));
+const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText, lang }) => {
+    const { data, isLoading } = useQuery(["ayah", ayahNum, lang], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum}/${lang === "ar" ? "ar.muyassar" : "en.asad"}`).then((res) => res.data.data));
     return (
         <Dialog>
             <DialogTrigger ><Icons.Tafsir className='hover:text-primary w-6 h-6' /></DialogTrigger>
@@ -37,7 +38,7 @@ const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText }) => {
                     </DialogHeader>
                     <div className='flex items-center gap-2'>
                         <span className='bg-muted rounded-lg w-fit p-2 px-4'>{data?.edition.name}</span>
-                        <span className='bg-muted rounded-lg w-fit p-2 px-4'>{data?.surah.name}</span>
+                        <span className='bg-muted rounded-lg w-fit p-2 px-4'> {lang === "ar" ? data?.surah.name : data?.surah.englishNameTranslation}</span>
                     </div>
                 </DialogContent>
             )

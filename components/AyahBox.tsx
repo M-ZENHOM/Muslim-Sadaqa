@@ -36,7 +36,7 @@ const AyahBox: FC<AyahBoxProps> = ({ Surah, sur, ayahNum, lang }) => {
                     <Icons.Play className='hover:text-primary w-6 h-6' />
                 </Link>
                 {/* Refactor Tafsir Dialog Modal Later ... */}
-                <Tafsir ayahNum={sur.number} ayahText={sur.text} />
+                <Tafsir ayahNum={sur.number} ayahText={sur.text} lang={lang} />
             </PopoverContent>
         </Popover>
     )
