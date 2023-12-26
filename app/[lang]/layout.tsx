@@ -8,12 +8,56 @@ import Providers from './Providers'
 import { Locale } from '@/i18n-config';
 import { arabicSans, inter } from '../../lib/fonts';
 
+
 export const metadata: Metadata = {
-  title: `${siteConfig.title}`,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
   description: siteConfig.description,
+  keywords: [
+    "Quran",
+    "Azkar",
+    "Doaa",
+    "أذكار",
+    "دعاء",
+    "قرأن",
+    'تسبيح',
+    "اذكار الصباح",
+    'اذكار المساء',
+    'سور',
+    'سور القران',
+    'quran surah'
+  ],
+  metadataBase: new URL(siteConfig.url),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.title,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/opengraph-image.png`],
+    creator: "@MAD_ZENHOM",
+  },
+  authors: [
+    {
+      name: "Mahmoud Zenhom",
+      url: siteConfig.github,
+    },
+  ],
+  publisher: 'Mahmoud Mohamed Zenhom',
+  creator: "Mahmoud Zenhom",
   icons: {
-    icon: '/favicon.ico',
-  }
+    icon: "/icons/icon.png",
+    shortcut: "/icons/favicon.ico",
+    apple: "/icons/apple-icon.png",
+  },
 }
 
 export default function RootLayout({ children, params }: { children: React.ReactNode, params: { lang: Locale } }) {

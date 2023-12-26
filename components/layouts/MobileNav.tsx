@@ -11,6 +11,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import LangToggle from '../LangToggle'
 import { Locale } from '@/i18n-config'
 import { Badge } from '../ui/badge'
+import Share from '../Share'
 
 
 function MobileNav({ NavMenu, lang }: { NavMenu: { title: string, href: string, IsNew?: boolean }[], lang: Locale }) {
@@ -28,7 +29,7 @@ function MobileNav({ NavMenu, lang }: { NavMenu: { title: string, href: string, 
                 <SheetTrigger className={cn(buttonVariants({ variant: "outline" }), "mx-2")}>
                     <Icons.Bars aria-label='Bars' />
                 </SheetTrigger>
-                <SheetContent className='flex flex-col items-start space-y-5 py-16'>
+                <SheetContent className='flex flex-col items-start space-y-5 py-6 px-10'>
                     <ul className='flex flex-col  items-start space-y-3 text-lg font-extrabold'>
                         {NavMenu.map((link, i) => (
                             <li aria-label={link.title} key={i}>
@@ -41,6 +42,7 @@ function MobileNav({ NavMenu, lang }: { NavMenu: { title: string, href: string, 
                     </ul>
                     <ThemeToggle />
                     <LangToggle />
+                    <Share lang={lang} />
                 </SheetContent>
             </Sheet>
         </nav>
