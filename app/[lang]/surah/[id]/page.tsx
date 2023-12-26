@@ -29,7 +29,7 @@ export default async function page({ params, searchParams }: { params: { id: num
                     {Surah.code === 200 ? (
                         <>
                             {Surah?.data?.ayahs.map((sur: SurahType) => (
-                                <div key={sur.number} className='flex justify-between items-center w-full p-2 group'>
+                                <div dir={params.lang === "ar" ? "rtl" : "ltr"} key={sur.number} className='flex justify-between items-center w-full p-2 group'>
                                     <span className='bg-muted w-12 h-12 rounded-full text-center flex justify-center items-center group-hover:text-primary-foreground group-hover:bg-primary  text-lg'>{sur.numberInSurah}</span>
                                     <AyahBox sur={sur} Surah={Surah} ayahNum={ayahNum} lang={params.lang} />
                                 </div>

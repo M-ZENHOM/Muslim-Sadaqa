@@ -23,7 +23,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
           <CardTitle className='text-muted-foreground'>{IndexPage.AyahBoxTitle}</CardTitle>
           <h2 className='text-lg'>{ayah.data.text}</h2>
         </Card>
-        <FavBox IndexPage={IndexPage} />
+        <FavBox IndexPage={IndexPage} lang={lang} />
       </div>
       {QuranSurahs?.code === 200 ? (
         <div className={cn('grid grid-cols-fluid gap-4 py-4 place-items-center')}>

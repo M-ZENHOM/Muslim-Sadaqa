@@ -13,14 +13,15 @@ interface FavProps {
         FavBoxSubTitle: string
         FavBoxDiscription: string
     }
+    lang: string
 }
-const FavBox = ({ IndexPage }: FavProps) => {
+const FavBox = ({ IndexPage, lang }: FavProps) => {
     const surahStore = useStore(useSurahStore, (state) => state)
     const router = useRouter()
     return (
         <Card className='w-full h-60 p-8 text-center space-y-3 bg-gradient-to-br from-primary/25 to-50%'>
             <CardTitle className='text-muted-foreground'>{IndexPage.FavBoxTitle}</CardTitle>
-            <ScrollArea className="rounded-md p-4 h-full" >
+            <ScrollArea dir={lang === "ar" ? "rtl" : "ltr"} className="rounded-md p-4 h-full" >
                 {!surahStore ? (
                     <div className='w-full flex items-center flex-col justify-center space-y-4'>
                         <Skeleton className='w-20 h-5' />
