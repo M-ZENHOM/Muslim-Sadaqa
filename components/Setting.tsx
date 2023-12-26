@@ -26,7 +26,7 @@ export default function Setting({ reciters, lang, SurahPage }: { reciters: { rec
         <Sheet>
             <SheetTrigger asChild >
                 <div className={cn('fixed top-20 md:top-10 bg-primary text-primary-foreground  p-2 z-10 cursor-pointer', { "left-0 rounded-r-xl ": lang === 'ar', "right-0 rounded-l-xl": lang === 'en' })}>
-                    <Icons.Setting aria-label='Setting' className='w-6 h-6 hover:animate-spin' />
+                    <Icons.Setting aria-label='Setting Button' className='w-6 h-6 hover:animate-spin' />
                 </div>
             </SheetTrigger>
             <SheetContent>
