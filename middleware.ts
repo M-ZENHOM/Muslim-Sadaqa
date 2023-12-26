@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
     if (pathnameIsMissingLocale) {
         return NextResponse.redirect(
             new URL(
-                `/${lang}/${pathname}`,
+                `/${lang}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
                 request.url
             )
         )

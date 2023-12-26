@@ -7,7 +7,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 interface AudioPlayerProps {
-    src: string;
+    src: string | null;
     ayahNum?: number;
     autoPlay: boolean;
     className?: string;
@@ -55,7 +55,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, autoPlay, ayahNum, class
 
     return (
         <div className={cn('border border-primary/50 rounded-lg  bg-muted/25 bg-gradient-to-tr from-primary/25 to-50% p-4', className)}>
-            <audio ref={audioRef} src={src} onPlay={playHandler} onEnded={endHandler} onTimeUpdate={timeUpdateHandler} autoPlay={autoPlay} />
+            <audio ref={audioRef} src={src!} onPlay={playHandler} onEnded={endHandler} onTimeUpdate={timeUpdateHandler} autoPlay={autoPlay} />
             <div className='flex items-center  justify-center'>
                 <Link className={cn("hover:text-primary p-2 rounded-full", { "pointer-events-none opacity-50": ayahNum === 0 || !ayahNum })} href={{ query: { ayahNum: ayahNum && ayahNum + 1 } }} scroll={false} >
                     <Icons.PlayNext />
