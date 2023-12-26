@@ -16,7 +16,7 @@ const Tafsir: FC<TafsirProps> = ({ ayahNum, ayahText, lang }) => {
     const { data, isLoading } = useQuery(["ayah", ayahNum, lang], () => axios.get(`https://api.alquran.cloud/v1/ayah/${ayahNum}/${lang === "ar" ? "ar.muyassar" : "en.asad"}`).then((res) => res.data.data));
     return (
         <Dialog>
-            <DialogTrigger ><Icons.Tafsir className='hover:text-primary w-6 h-6' /></DialogTrigger>
+            <DialogTrigger ><Icons.Tafsir className='hover:bg-primary hover:rounded-sm hover:text-primary-foreground p-1 w-6 h-6' /></DialogTrigger>
             {isLoading ? (
                 <DialogContent className='p-10'>
                     <Skeleton className='w-full h-6' />

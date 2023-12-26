@@ -1,4 +1,4 @@
-import { SunIcon, MoonIcon, SettingsIcon, Laptop, type LucideProps, Trash2Icon, PlayIcon, AlignJustifyIcon, BookOpen, ArrowDown, ChevronDown, SkipForward, SkipBack, Pause, HelpingHand } from 'lucide-react'
+import { SunIcon, MoonIcon, SettingsIcon, Laptop, type LucideProps, Trash2Icon, PlayIcon, AlignJustifyIcon, BookOpen, ChevronDown, SkipForward, SkipBack, Pause, HelpingHand, Copy } from 'lucide-react'
 
 export const Icons = {
     Sun: SunIcon,
@@ -12,6 +12,7 @@ export const Icons = {
     BottomArrow: ChevronDown,
     PlayNext: SkipForward,
     PlayPrev: SkipBack,
+    Copy: Copy,
     Stop: Pause,
     Doaa: HelpingHand,
     Heart: (props: LucideProps) => (
