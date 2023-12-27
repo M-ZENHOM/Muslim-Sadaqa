@@ -23,14 +23,14 @@ export default async function page({ params, searchParams }: { params: { id: num
                 <SurahAudioBoxs ayahNum={ayahNum} SurahPage={SurahPage} surahNum={params.id} />
                 <SurahDetails lang={params.lang} Surah={Surah} SurahPage={SurahPage} />
             </div>
-            <div className='flex flex-col h-full flex-1 px-10'>
+            <div className='flex flex-col h-full flex-1 px-2 md:px-10'>
                 <ScrollArea className="w-full h-[80vh] pb-20 pt-5">
                     <Icons.Bismallah className='text-center w-full' />
                     {Surah.code === 200 ? (
                         <>
                             {Surah?.data?.ayahs.map((sur: SurahType) => (
                                 <div dir={params.lang === "ar" ? "rtl" : "ltr"} key={sur.number} className='flex justify-between items-center w-full p-2 group'>
-                                    <span className='bg-muted w-12 h-12 rounded-full text-center flex justify-center items-center group-hover:text-primary-foreground group-hover:bg-primary  text-lg'>{sur.numberInSurah}</span>
+                                    <span className='bg-muted w-10 h-10 rounded-full text-center flex justify-center items-center group-hover:text-primary-foreground group-hover:bg-primary  text-lg'>{sur.numberInSurah}</span>
                                     <AyahBox sur={sur} Surah={Surah} ayahNum={ayahNum} lang={params.lang} />
                                 </div>
                             ))}
