@@ -19,11 +19,11 @@ export default async function page({ params, searchParams }: { params: { id: num
     return (
         <section className='min-h-screen '>
             <Setting reciters={reciters} lang={params.lang} SurahPage={SurahPage} />
-            <div className='flex justify-center items-center gap-5 w-full pt-20 md:py-8 px-4 '>
+            <div className='flex justify-center items-center gap-5 w-full pt-20 md:py-8 px-10 '>
                 <SurahAudioBoxs ayahNum={ayahNum} SurahPage={SurahPage} surahNum={params.id} />
                 <SurahDetails lang={params.lang} Surah={Surah} SurahPage={SurahPage} />
             </div>
-            <div className='flex flex-col h-full flex-1 px-4'>
+            <div className='flex flex-col h-full flex-1 px-10'>
                 <ScrollArea className="w-full h-[80vh] pb-20 pt-5">
                     <Icons.Bismallah className='text-center w-full' />
                     {Surah.code === 200 ? (
