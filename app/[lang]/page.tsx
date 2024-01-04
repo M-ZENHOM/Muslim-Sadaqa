@@ -11,6 +11,13 @@ import { getQuranSurahs } from '@/lib/getQuranSurahs'
 import TodayAyah from '@/components/TodayAyah'
 
 
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+  return {
+    title: `${params.lang === 'ar' ? '  القران الكريم - مسلم صدقة' : 'Quran Kareem - Muslism Sadqa'}`,
+  }
+}
+
+
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const ayah = await getRandomAyah()
   const { IndexPage } = await getDictionary(lang)

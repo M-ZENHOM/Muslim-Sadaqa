@@ -9,7 +9,15 @@ import Setting from '@/components/Setting';
 import SurahAudioBoxs from '@/components/SurahAudioBoxs';
 import SurahDetails from '@/components/SurahDetails';
 import { getSurahDetails } from '@/lib/getSurahDetails';
+import { surahFahras } from '@/config/db/QuranFahras';
 
+
+export async function generateMetadata({ params }: { params: { id: number, lang: Locale } }) {
+    const Surah = surahFahras.data.map(surah => surah).find(surah => surah.number == params.id)
+    return {
+        title: `${params.lang === 'ar' ? Surah?.name : Surah?.englishNameTranslation}`,
+    }
+}
 
 export default async function page({ params, searchParams }: { params: { id: number, lang: Locale }, searchParams: { [key: string]: string | string[] | undefined } }) {
     const ayahNum = typeof searchParams.ayahNum === 'string' ? Number(searchParams.ayahNum) : 0

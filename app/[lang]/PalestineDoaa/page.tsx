@@ -6,6 +6,13 @@ import { getMusliumData } from '@/lib/getMusliumData'
 import { PalestineDoaaType } from '@/types'
 import { getDictionary } from '@/dictionaries'
 
+
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+    return {
+        title: `${params.lang === 'ar' ? 'دعاء لفلسطين' : 'Palestine Doaa'}`,
+    }
+}
+
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { PalestineDoaaPage } = await getDictionary(lang)
     const PalestineDoaa = await getMusliumData("PalestineDoaa", lang)

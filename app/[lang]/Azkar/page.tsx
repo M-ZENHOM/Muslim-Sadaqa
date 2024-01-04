@@ -11,7 +11,11 @@ interface Zekr {
     repeat: number,
     bless: string
 }
-
+export async function generateMetadata({ params }: { params: { id: number, lang: Locale } }) {
+    return {
+        title: `${params.lang === 'ar' ? 'الاذكار' : 'Azkar'}`,
+    }
+}
 
 
 export default async function page({ params: { lang } }: { params: { id: number, lang: Locale } }) {
