@@ -61,3 +61,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.custom-audio-player{
+  border: 1px solid #cccccc48;
+  padding: 10px;
+  background-color: #fff;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #090F1B !important;
+  .rhap_time {
+    color: #fff;
+  }
+}
