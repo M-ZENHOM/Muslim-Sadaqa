@@ -70,7 +70,8 @@
   z-index: 9999;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #090F1B !important;
-  .rhap_time {
-    color: #fff;
-  }
+}
+
+.custom-audio-player .rhap_time {
+  color: #fff;
 }
