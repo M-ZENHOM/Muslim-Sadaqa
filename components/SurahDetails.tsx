@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { arabicNumeralFormatter, cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
 import type { Locale } from '@/i18n-config'
@@ -8,7 +8,7 @@ export default function SurahDetails({ lang, Surah, SurahPage }: { lang: Locale,
     return (
         <Card className='bg-muted/25 bg-gradient-to-tr from-primary/25 to-50% w-full max-w-xl'>
             <CardHeader >
-                <CardTitle className='text-sm md:text-xl'>{lang === "ar" ? Surah.data?.name : Surah.data?.englishName}  - {Surah.data?.numberOfAyahs} {SurahPage.Ayahs}</CardTitle>
+                <CardTitle className='text-sm md:text-xl'>{lang === "ar" ? Surah.data?.name : Surah.data?.englishName}  - {lang === 'ar' ? arabicNumeralFormatter(String(Surah.data?.numberOfAyahs),false) : Surah.data?.numberOfAyahs } {SurahPage.Ayahs}</CardTitle>
                 <CardDescription>{lang === "en" && `${Surah.data?.englishNameTranslation} - `}  {lang === "ar" ? Surah.data?.revelationType === "Medinan" ? "مدنيه" : "مكيه" : Surah.data?.revelationType}  </CardDescription>
             </CardHeader>
             <CardContent className={cn('flex gap-4 text-sm')}>

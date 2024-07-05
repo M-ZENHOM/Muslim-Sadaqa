@@ -10,6 +10,7 @@ import SurahAudioBoxs from "@/components/SurahAudioBoxs";
 import SurahDetails from "@/components/SurahDetails";
 import { getSurahDetails } from "@/lib/getSurahDetails";
 import QuranChapters from "@/config/db/QuranChapters.json";
+import { arabicNumeralFormatter } from "@/lib/utils";
 export async function generateMetadata({
   params,
 }: {
@@ -72,7 +73,9 @@ export default async function page({
                   className="flex justify-between items-center w-full p-2 group"
                 >
                   <span className="bg-muted w-10 h-10 rounded-full text-center flex justify-center items-center group-hover:text-primary-foreground group-hover:bg-primary  text-lg">
-                    {sur.numberInSurah}
+                    {params.lang === "ar"
+                      ? arabicNumeralFormatter(String(sur.numberInSurah), false)
+                      : sur.numberInSurah}
                   </span>
                   <AyahBox
                     sur={sur}
