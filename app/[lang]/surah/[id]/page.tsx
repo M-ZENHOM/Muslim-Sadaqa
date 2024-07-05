@@ -10,8 +10,6 @@ import SurahAudioBoxs from "@/components/SurahAudioBoxs";
 import SurahDetails from "@/components/SurahDetails";
 import { getSurahDetails } from "@/lib/getSurahDetails";
 import QuranChapters from "@/config/db/QuranChapters.json";
-import { useMemo } from "react";
-
 export async function generateMetadata({
   params,
 }: {
@@ -41,7 +39,7 @@ export default async function page({
       getSurahDetails(params.id, params.lang),
       getDictionary(params.lang),
       getMusliumData("reciters", params.lang),
-    ]); 
+    ]);
 
   return (
     <section className="min-h-screen ">
