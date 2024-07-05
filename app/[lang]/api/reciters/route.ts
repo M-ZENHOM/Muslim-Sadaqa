@@ -1,13 +1,6 @@
-import { NextResponse } from 'next/server'
-import path from 'path';
-import { promises as fs } from 'fs';
+import { NextResponse } from "next/server";
+import Reciters from "@/config/db/reciters.json";
 
-export async function GET(request: Request) {
-    if (request.method === 'GET') {
-        const jsonDirectory = path.join(process.cwd(), '/config/db');
-        const reciters = await fs.readFile(jsonDirectory + '/reciters.json', 'utf8');
-        return NextResponse.json(JSON.parse(reciters), { status: 200 })
-    } else {
-        return NextResponse.json("method not allowed", { status: 405 })
-    }
+export function GET() {
+    return NextResponse.json(Reciters);
 }
