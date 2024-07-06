@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icons } from "./Icons";
 import { useIsSurahStored } from "@/hooks/useIsSurahStored";
 import { useSurahStore } from "@/store";
-import { cn } from "@/lib/utils";
+import { arabicNumeralFormatter, cn } from "@/lib/utils";
 import { Locale } from "@/i18n-config";
 
 interface SurahBoxProps {
@@ -36,7 +36,9 @@ const SurahBox: FC<SurahBoxProps> = ({
         className={cn("flex items-center justify-between space-x-4  w-full")}
       >
         <span className="w-[35px] h-[35px] bg-primary text-primary-foreground rounded-full text-center leading-[35px] group-hover:bg-lime-400">
-          {number}
+          {lang === "ar"
+            ? arabicNumeralFormatter(number.toString(), false)
+            : number}
         </span>
         <span>{lang === "ar" ? `${name} ` : englishNameTranslation}</span>
         <span className={cn("group-hover:text-primary")}>
