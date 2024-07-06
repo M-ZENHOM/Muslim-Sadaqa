@@ -23,6 +23,34 @@ export interface SurahType {
 
 }
 
+export interface AyahType {
+    number: number
+    text: string
+    edition: {
+        identifier: string
+        language: string
+        name: string
+        englishName: string
+        format: string
+        type: string
+    }
+    surah: {
+        number: number
+        name: string
+        englishName: string
+        englishNameTranslation: string
+        numberOfAyahs: number
+        revelationType: string
+    }
+    numberInSurah: number
+    juz: number
+    manzil: number
+    page: number
+    ruku: number
+    hizbQuarter: number
+    sajda: boolean
+}
+
 export interface PalestineDoaaType {
     arabic: string
     english: string

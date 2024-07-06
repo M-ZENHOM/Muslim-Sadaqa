@@ -1,4 +1,5 @@
 import { Locale } from "@/i18n-config";
+import { AyahType } from "@/types";
 import axios from "axios"
 
 export const getMuslimData = async (pathName: string, lang: Locale) => {
@@ -9,13 +10,3 @@ export const getMuslimData = async (pathName: string, lang: Locale) => {
         axios.isAxiosError(error) && console.error(error)
     }
 };
-
-export const getRandomAyah = async () => {
-    const randomAyah = Math.floor(Math.random() * 6236) + 1
-    try {
-        const res = await axios.get(`${process.env.API_URL}/ayah/${randomAyah}/ar.alafasy`)
-        return res.data
-    } catch (error) {
-        axios.isAxiosError(error) && console.error(error)
-    }
-}
