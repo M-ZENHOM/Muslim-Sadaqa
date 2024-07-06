@@ -35,7 +35,7 @@ const SurahBox: FC<SurahBoxProps> = ({
         href={`/${lang}/surah/${number}`}
         className={cn("flex items-center justify-between space-x-4  w-full")}
       >
-        <span className="w-[35px] h-[35px] bg-primary text-primary-foreground rounded-full text-center leading-[35px] group-hover:bg-lime-400">
+        <span className="w-[35px] h-[35px] bg-primary text-primary-foreground rounded-full text-center leading-[35px]">
           {lang === "ar"
             ? arabicNumeralFormatter(number.toString(), false)
             : number}
