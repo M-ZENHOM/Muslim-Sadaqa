@@ -1,5 +1,4 @@
 import { Locale } from "@/i18n-config";
-import { AyahType } from "@/types";
 import axios from "axios"
 
 export const getMuslimData = async (pathName: string, lang: Locale) => {
