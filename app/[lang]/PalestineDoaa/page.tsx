@@ -2,7 +2,7 @@ import { Icons } from '@/components/Icons'
 import Wrapper from '@/components/Wrapper'
 import { Card, CardTitle } from '@/components/ui/card'
 import { Locale } from '@/i18n-config'
-import { getMusliumData } from '@/lib/getMusliumData'
+import { getMuslimData } from '@/lib/getMuslimData'
 import { PalestineDoaaType } from '@/types'
 import { getDictionary } from '@/dictionaries'
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { PalestineDoaaPage } = await getDictionary(lang)
-    const PalestineDoaa = await getMusliumData("PalestineDoaa", lang)
+    const PalestineDoaa = await getMuslimData("PalestineDoaa", lang)
     return (
         <Wrapper className='space-y-4 mx-auto py-20  '>
             <h2 className='text-2xl md:text-5xl font-extrabold text-center py-4 flex items-center justify-between'> {PalestineDoaaPage.Title} <Icons.Doaa className='w-14 h-14' /></h2>

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import FavBox from "@/components/FavBox";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/dictionaries";
-import { getRandomAyah } from "@/lib/getMusliumData";
+import { getRandomAyah } from "@/lib/getMuslimData";
 import { QuranData } from "@/types";
 import { getQuranChapters } from "@/lib/getQuranChapters";
 import TodayAyah from "@/components/TodayAyah";

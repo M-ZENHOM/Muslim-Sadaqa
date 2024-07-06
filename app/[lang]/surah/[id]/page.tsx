@@ -3,7 +3,7 @@ import { Icons } from "@/components/Icons";
 import { Locale } from "@/i18n-config";
 import { SurahType } from "@/types";
 import AyahBox from "@/components/AyahBox";
-import { getMusliumData } from "@/lib/getMusliumData";
+import { getMuslimData } from "@/lib/getMuslimData";
 import { getDictionary } from "@/dictionaries";
 import Setting from "@/components/Setting";
 import SurahAudioBoxs from "@/components/SurahAudioBoxs";
@@ -39,7 +39,7 @@ export default async function page({
     await Promise.all([
       getSurahDetails(params.id, params.lang),
       getDictionary(params.lang),
-      getMusliumData("reciters", params.lang),
+      getMuslimData("reciters", params.lang),
     ]);
 
   return (

@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/c
 import { Icons } from '@/components/Icons';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Locale } from '@/i18n-config';
-import { getMusliumData } from '@/lib/getMusliumData';
+import { getMuslimData } from '@/lib/getMuslimData';
 import { getDictionary } from '@/dictionaries';
 
 interface Zekr {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: { id: number, lang:
 
 export default async function page({ params: { lang } }: { params: { id: number, lang: Locale } }) {
     const { AzkarPage } = await getDictionary(lang)
-    const Azkar = await getMusliumData('azkar', lang)
+    const Azkar = await getMuslimData('azkar', lang)
     return (
         <Wrapper className='py-20' >
             <h2 className='text-5xl font-extrabold text-center py-10 flex items-center justify-between'>{AzkarPage.Title} <Icons.Sun className='w-14 h-14' /></h2>
