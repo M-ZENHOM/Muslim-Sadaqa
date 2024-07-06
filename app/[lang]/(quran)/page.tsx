@@ -8,6 +8,7 @@ import { getDictionary } from "@/dictionaries";
 import { QuranData } from "@/types";
 import { getQuranChapters } from "@/lib/getQuranChapters";
 import TodayAyah from "@/components/TodayAyah";
+import { getMuslimData } from "@/lib/getMuslimData";
 
 export async function generateMetadata({
   params,
@@ -30,12 +31,17 @@ export default async function Home({
 }) {
   const { IndexPage } = await getDictionary(lang);
   const QuranChapters = await getQuranChapters(lang);
+  const randomAyah = await getMuslimData("random-ayah", lang);
 
   return (
     <Wrapper>
       <Icons.QuranKareem className="w-4/12 mx-auto py-28 md:py-20" />
       <div className="flex flex-wrap md:flex-nowrap gap-4 items-center justify-between">
-        <TodayAyah AyahBoxTitle={IndexPage.AyahBoxTitle} lang={lang} />
+        <TodayAyah
+          AyahBoxTitle={IndexPage.AyahBoxTitle}
+          lang={lang}
+          randomAyah={randomAyah.data.text}
+        />
         <FavBox IndexPage={IndexPage} lang={lang} />
       </div>
       {QuranChapters.length !== 0 ? (
