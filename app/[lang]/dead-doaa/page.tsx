@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: { id: number, lang:
 
 export default async function page({ params: { lang } }: { params: { lang: Locale } }) {
     const { DeadDoaaPage } = await getDictionary(lang)
-    const DeadDoaa = await getMuslimData("DeadDoaa", lang)
+    const DeadDoaa = await getMuslimData("dead-doaa", lang)
     return (
         <Wrapper className='py-20'>
             <h2 className='text-2xl md:text-5xl font-extrabold  py-10 '> {DeadDoaaPage.Title}</h2>

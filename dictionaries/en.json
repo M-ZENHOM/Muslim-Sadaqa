@@ -7,8 +7,8 @@
     { "title": "Quran", "href": "/" },
     { "title": "Azkar", "href": "/Azkar" },
     { "title": "Masbha", "href": "/Masbha" },
-    { "title": "Dead Doaa", "href": "/DeadDoaa" },
-    { "title": "PalestineDoaa", "href": "/PalestineDoaa", "IsNew": true }
+    { "title": "Dead Doaa", "href": "/dead-doaa" },
+    { "title": "PalestineDoaa", "href": "/palestine-doaa", "IsNew": true }
   ],
   "SurahPage": {
     "surahBtn": "Next",

@@ -5,10 +5,10 @@
   },
   "NavMenu": [
     { "title": "القرأن", "href": "/" },
-    { "title": "الاذكار", "href": "/Azkar" },
-    { "title": "دعاء للمتوفي", "href": "/DeadDoaa" },
-    { "title": "دعاء لفلسطين", "href": "/PalestineDoaa", "IsNew": true },
-    { "title": "مسبحة", "href": "/Masbha" }
+    { "title": "الاذكار", "href": "/azkar" },
+    { "title": "دعاء للمتوفي", "href": "/dead-doaa" },
+    { "title": "دعاء لفلسطين", "href": "/palestine-doaa", "IsNew": true },
+    { "title": "مسبحة", "href": "/masbha" }
   ],
   "SurahPage": {
     "surahBtn": "التالي",
