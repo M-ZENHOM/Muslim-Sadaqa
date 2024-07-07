@@ -3,7 +3,6 @@ import { FC, useRef, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Icons } from "./Icons";
 import Tafsir from "./Tafsir";
-import Link from "next/link";
 import { SurahType } from "@/types";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/store";
@@ -27,9 +26,17 @@ const AyahBox: FC<AyahBoxProps> = ({ Surah, sur, ayahNum, lang }) => {
   const setting = useStore(useSettings, (state) => state.settings[0]);
   const [_, copy] = useCopyToClipboard();
   const [isPlaying, setIsPlaying] = useState(false);
-
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const pauseOtherAudios = () => {
+    const allAudios = document.getElementsByTagName("audio");
+    for (let i = 0; i < allAudios.length; i++) {
+      const audio = allAudios[i];
+      if (audio !== audioRef.current && !audio?.paused) {
+        audio?.pause();
+      }
+    }
+  };
   const togglePlayPause = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const audio = audioRef.current;
@@ -38,10 +45,12 @@ const AyahBox: FC<AyahBoxProps> = ({ Surah, sur, ayahNum, lang }) => {
     if (isPlaying) {
       audio.pause();
     } else {
+      pauseOtherAudios();
       audio.play();
     }
     setIsPlaying((prev) => !prev);
   };
+
   return (
     <Popover modal={false}>
       <PopoverTrigger
