@@ -58,9 +58,9 @@ export async function generateMetadata({
         publisher: "Mahmoud Mohamed Zenhom",
         creator: "Mahmoud Zenhom",
         icons: {
-            icon: "/icons/icon.png",
-            shortcut: "/icons/favicon.ico",
-            apple: "/icons/apple-icon.png",
+            icon: "/favicon.ico",
+            shortcut: "/favicon.ico",
+            apple: "/favicon.ico",
         },
     };
 }
