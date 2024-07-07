@@ -6,11 +6,10 @@ import AyahBox from "@/components/AyahBox";
 import { getMuslimData } from "@/lib/getMuslimData";
 import { getDictionary } from "@/dictionaries";
 import Setting from "@/components/Setting";
-import SurahAudioBoxs from "@/components/SurahAudioBoxs";
-import SurahDetails from "@/components/SurahDetails";
 import { getSurahDetails } from "@/lib/getSurahDetails";
 import QuranChapters from "@/config/db/QuranChapters.json";
 import { arabicNumeralFormatter } from "@/lib/utils";
+import { AudioPlayer } from "@/components/AudioPlayer";
 export async function generateMetadata({
   params,
 }: {
@@ -50,15 +49,16 @@ export default async function page({
         SurahPage={surahPageTranslations}
       />
       <div className="flex flex-col justify-center items-center md:flex-row gap-5 w-full pt-20 md:py-8 px-10 ">
-        <SurahAudioBoxs
-          ayahNum={ayahNum}
-          SurahPage={surahPageTranslations}
+        <AudioPlayer
+          title={`${
+            params.lang === "ar" ? Surah.data?.name : Surah.data?.englishName
+          } - ${
+            params.lang === "ar"
+              ? arabicNumeralFormatter(String(Surah.data?.numberOfAyahs), false)
+              : Surah.data?.numberOfAyahs
+          } ${surahPageTranslations.Ayahs}`}
           surahNum={params.id}
-        />
-        <SurahDetails
           lang={params.lang}
-          Surah={Surah}
-          SurahPage={surahPageTranslations}
         />
       </div>
       <div className="flex flex-col h-full flex-1 px-2 md:px-10">
